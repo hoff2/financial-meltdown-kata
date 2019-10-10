@@ -6,7 +6,7 @@ const CreditApplicationContainer = (props) => (
     <div>
         <header>Credit Application</header>
         <div className='userId'>{'User: '} {props.userId}</div>
-        <CustomerDetails/>
+        <CustomerDetails {...props} />
     </div>
 );
 

@@ -3,7 +3,8 @@ import CreditApplicationContainer from "./credit-application-container";
 
 export const mapStateToProps = state => (
     {
-        userId: state.userId
+        userId: state.userId,
+        customerDetails: state.customerDetails
     });
 
 const mapDispatchToProps = state => ({});
