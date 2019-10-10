@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import CreditApplicationContainer from "../../../src/views/credit-application/credit-application-container";
+import CreditApplicationContainer from "../../../../src/views/credit-application/credit-application-container";
 
 describe("CreditApplicationContainer", () => {
     test("should contain header", () => {
