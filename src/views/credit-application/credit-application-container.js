@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CreditApplicationContainer = () => (
+const CreditApplicationContainer = (props) => (
     <div>
         <header>Credit Application</header>
+        <div className='userId'>{'User: '} {props.userId}</div>
     </div>
 );
 
-CreditApplicationContainer.propTypes = {};
+CreditApplicationContainer.propTypes = {
+    userId: PropTypes.string
+};
 
 export default CreditApplicationContainer;
