@@ -90,7 +90,8 @@
       "!src/**/*.d.ts"
     ],
     "setupFiles": [
-      "react-app-polyfill/jsdom"
+      "react-app-polyfill/jsdom",
+      "./jestSetup"
     ],
     "setupFilesAfterEnv": [],
     "testMatch": [
@@ -133,5 +134,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0"
   }
 }
