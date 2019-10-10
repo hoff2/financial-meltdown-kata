@@ -1,7 +1,10 @@
 import {connect} from 'react-redux';
 import CreditApplicationContainer from "./credit-application-container";
 
-const mapStateToProps = state => ({});
+export const mapStateToProps = state => (
+    {
+        userId: state.userId
+    });
 
 const mapDispatchToProps = state => ({});
 

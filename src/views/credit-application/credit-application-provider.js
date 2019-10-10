@@ -3,7 +3,7 @@ import prepareStore from "../../store/store";
 import {Provider} from "react-redux";
 import CreditApplicationConnector from './credit-application-connector';
 
-const store = prepareStore({});
+const store = prepareStore({userId: 'tdawg'});
 
 const CreditApplicationProvider = () => (
     <Provider store={store}>
