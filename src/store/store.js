@@ -1,7 +1,11 @@
 import { createStore } from "redux";
 import combinedReducers from "../reducers/index";
 
-function prepareStore(state = {}) {
+const initialState = {
+    userId: 'tdawg'
+};
+
+function prepareStore(state = initialState) {
     return createStore(combinedReducers, state);
 }
 

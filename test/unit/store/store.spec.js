@@ -6,5 +6,6 @@ describe("prepareStore", () => {
         const store = prepareStore();
 
         expect(store).not.toBeNull();
+        expect(store.getState().userId).toEqual('tdawg');
     });
 });
