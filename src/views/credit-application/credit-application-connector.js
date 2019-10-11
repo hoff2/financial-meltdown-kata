@@ -2,11 +2,12 @@ import {connect} from 'react-redux';
 import CreditApplicationContainer from "./credit-application-container";
 import {updateLastName} from "../../action-creators/update-customer-details";
 
-export const mapStateToProps = state => (
-    {
+export const mapStateToProps = state => {
+    return {
         userId: state.userId,
         customerDetails: state.customerDetails
-    });
+    };
+};
 
 export const mapDispatchToProps = {
     updateLastName

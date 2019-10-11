@@ -1,6 +1,7 @@
 import CustomerDetailsData from "../../../src/state/customer-details-data";
 import customerDetailsReducer from "../../../src/reducers/customer-details-reducer";
 import Chance from 'chance';
+import {UPDATE_LAST_NAME} from "../../../src/action-creators/actions";
 
 const chance = new Chance();
 
@@ -15,7 +16,7 @@ describe("CustomerDetailsReducer", () => {
                 }
             });
             const action = {
-                type: 'UPDATE_LAST_NAME',
+                type: UPDATE_LAST_NAME,
                 payload: expectedUpdatedLastName
             };
 

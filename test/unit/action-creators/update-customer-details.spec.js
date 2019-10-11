@@ -1,6 +1,7 @@
 import * as sinon from "sinon";
 import {updateLastName} from "../../../src/action-creators/update-customer-details";
 import Chance from 'chance';
+import {UPDATE_LAST_NAME} from "../../../src/action-creators/actions";
 
 const chance = new Chance();
 
@@ -16,7 +17,7 @@ describe("UpdateCustomerDetails", () => {
 
         test("should emit action with updated last name", () => {
             const expectedEvent = {
-                type: 'UPDATE_LAST_NAME',
+                type: UPDATE_LAST_NAME,
                 payload: expectedLastName
             };
 

@@ -1,3 +1,8 @@
 import { combineReducers } from 'redux'
+import customerDetailsReducer from "./customer-details-reducer";
 
-export default combineReducers({})
+export const reducers = {
+    customerDetails: customerDetailsReducer
+};
+
+export default combineReducers(reducers);

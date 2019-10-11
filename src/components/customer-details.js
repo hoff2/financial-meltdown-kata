@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerDetailsData from "../state/customer-details-data";
 
-const CustomerDetails = (props) => (
+const CustomerDetails = (props) => {
+    return (
     <div>
         <header>{'Customer Details'}</header>
 
@@ -15,7 +16,7 @@ const CustomerDetails = (props) => (
                 onChange={(event) => props.updateLastName(event.target.value)} />
         </label>
     </div>
-);
+)};
 
 CustomerDetails.propTypes = {
     customerDetails: PropTypes.instanceOf(CustomerDetailsData),
