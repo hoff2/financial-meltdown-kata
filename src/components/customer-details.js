@@ -11,13 +11,15 @@ const CustomerDetails = (props) => (
             <input
                 type="text"
                 name="name"
-                value={props.customerDetails.lastName} />
+                value={props.customerDetails.lastName}
+                onChange={(event) => props.updateLastName(event.target.value)} />
         </label>
     </div>
 );
 
 CustomerDetails.propTypes = {
-    customerDetails: PropTypes.instanceOf(CustomerDetailsData)
+    customerDetails: PropTypes.instanceOf(CustomerDetailsData),
+    updateLastName: PropTypes.func
 };
 
 export default CustomerDetails;

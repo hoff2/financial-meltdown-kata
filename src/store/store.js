@@ -1,6 +1,7 @@
-import { createStore } from "redux";
+import {applyMiddleware, createStore} from "redux";
 import combinedReducers from "../reducers/index";
 import {getDefaultCustomerDetails} from "../state/customer-details-data";
+import thunk from "redux-thunk";
 
 const initialState = {
     userId: 'tdawg',
@@ -8,7 +9,7 @@ const initialState = {
 };
 
 function prepareStore(state = initialState) {
-    return createStore(combinedReducers, state);
+    return createStore(combinedReducers, state, applyMiddleware(thunk));
 }
 
 export default prepareStore;

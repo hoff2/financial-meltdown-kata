@@ -3,18 +3,22 @@ import {shallow} from 'enzyme';
 import CustomerDetails from "../../../src/components/customer-details";
 import Chance from 'chance';
 import CustomerDetailsData from "../../../src/state/customer-details-data";
+import * as sinon from "sinon";
 
 const chance = new Chance();
 
 describe("CustomerDetails", () => {
     let customerDetails;
 
+    const updateLastNameAC = sinon.spy();
+
     const expectedLastName = chance.string();
 
     const properties = {
         customerDetails: CustomerDetailsData({
             lastName: expectedLastName
-        })
+        }),
+        updateLastName: updateLastNameAC
     };
 
     beforeEach(() => {
@@ -32,5 +36,13 @@ describe("CustomerDetails", () => {
         const lastNameInput = customerDetails.find("input");
 
         expect(lastNameInput.prop('value')).toEqual(expectedLastName);
-    })
+    });
+
+    test("should call action creator when last name is changed", () => {
+        const lastNameInput = customerDetails.find("input");
+
+        lastNameInput.simulate('change', {target: {value: 'ugh'}});
+
+        expect(updateLastNameAC.calledOnce).toBe(true);
+    });
 });
