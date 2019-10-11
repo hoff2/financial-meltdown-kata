@@ -12,10 +12,8 @@ import {getDefaultCustomerDetails} from "../../../../src/state/customer-details-
 const chance = new Chance();
 
 describe("CreditApplicationConnector", () => {
-    const expectedUserId = chance.string();
     const expectedCustomerDetails = getDefaultCustomerDetails();
     const expectedState = {
-        userId: expectedUserId,
         customerDetails: expectedCustomerDetails
     };
 
@@ -29,10 +27,6 @@ describe("CreditApplicationConnector", () => {
     });
 
     describe("mapStateToProps", () => {
-        test("should provide a userId from state", () => {
-           expect(mapStateToProps(expectedState).userId).toEqual(expectedUserId);
-        });
-
         test("should provide customerDetails from state", () => {
             expect(mapStateToProps(expectedState).customerDetails).toEqual(expectedCustomerDetails);
         });

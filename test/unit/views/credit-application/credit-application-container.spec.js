@@ -11,11 +11,7 @@ describe("CreditApplicationContainer", () => {
 
     let container;
 
-    const expectedUserId = chance.string();
-
-    const properties = {
-        userId: expectedUserId
-    };
+    const properties = {};
 
     beforeEach(() => {
         container = shallow(<CreditApplicationContainer {...properties}/>);
@@ -25,12 +21,6 @@ describe("CreditApplicationContainer", () => {
         const header = container.find('header');
 
         expect(header.length).toEqual(1);
-    });
-
-    test("should display the userId", () => {
-        const userId = container.find('.userId');
-
-        expect(userId.text()).toContain(expectedUserId);
     });
 
     test("should have a customer details component", () => {

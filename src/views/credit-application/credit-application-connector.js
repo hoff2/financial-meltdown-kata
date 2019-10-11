@@ -4,7 +4,6 @@ import {updateLastName} from "../../action-creators/update-customer-details";
 
 export const mapStateToProps = state => {
     return {
-        userId: state.userId,
         customerDetails: state.customerDetails
     };
 };
