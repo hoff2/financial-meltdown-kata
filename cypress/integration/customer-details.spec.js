@@ -5,6 +5,27 @@ context('Customer Details', () => {
         cy.visit('/')
     });
 
+    it('should update the first name', () => {
+        // https://on.cypress.io/type
+        cy.get('.first-name>input')
+            .type('{selectall}{del}')
+            .type('newCustomerFirstName').should('have.value', 'newCustomerFirstName')
+
+        // .type() with special character sequences
+            .type('{leftarrow}{rightarrow}{uparrow}{downarrow}')
+            .type('{del}{selectall}{backspace}')
+
+            // .type() with key modifiers
+            .type('{alt}{option}') //these are equivalent
+            .type('{ctrl}{control}') //these are equivalent
+            .type('{meta}{command}{cmd}') //these are equivalent
+            .type('{shift}')
+
+            // Delay each keypress by 0.1 sec
+            .type('slowCustomerFirstName', { delay: 100 })
+            .should('have.value', 'slowCustomerFirstName')
+    });
+
     it('should update the last name', () => {
         // https://on.cypress.io/type
         cy.get('.last-name>input')

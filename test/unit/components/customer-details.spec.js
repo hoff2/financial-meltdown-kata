@@ -10,7 +10,7 @@ const chance = new Chance();
 describe("CustomerDetails", () => {
     let customerDetails;
 
-    const updateLastNameAC = sinon.spy();
+    const updateCustomerDetailsAC = sinon.spy();
 
     const properties = {
         customerDetails: CustomerDetailsData({
@@ -22,25 +22,72 @@ describe("CustomerDetails", () => {
             phone: chance.string(),
             email: chance.string()
         }),
-        updateLastName: updateLastNameAC
+        updateCustomerDetails: updateCustomerDetailsAC
     };
 
     beforeEach(() => {
         customerDetails = shallow(<CustomerDetails {...properties} />);
     });
 
-    test("should have a first name", () => {
-        const lastName = customerDetails.find(".first-name");
+    describe("First Name", () => {
+        test("should have a first name", () => {
+            const firstName = customerDetails.find(".first-name");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("First Name");
+            expect(firstName.length).toEqual(1);
+            expect(firstName.text()).toContain("First Name");
+        });
+
+        describe("input", () => {
+            let firstNameInput;
+
+            beforeEach(() => {
+                firstNameInput = customerDetails.find(".first-name>input");
+            });
+
+            test("should set first name to value from props", () => {
+                expect(firstNameInput.prop('value')).toEqual(properties.customerDetails.firstName);
+            });
+
+            test("should call update customer details when first name is changed", () => {
+                const fieldName = "firstName";
+                const updatedFirstName = chance.string();
+
+                firstNameInput.simulate('change', {target: {name: fieldName, value: updatedFirstName}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedFirstName)).toBe(true);
+            });
+        });
     });
 
-    test("should have a last name", () => {
-        const lastName = customerDetails.find(".last-name");
+    describe("Last Name", () => {
+        test("should have a last name", () => {
+            const lastName = customerDetails.find(".last-name");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("Last Name");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("Last Name");
+        });
+
+        describe("input", () => {
+            let lastNameInput;
+
+            beforeEach(() => {
+                lastNameInput = customerDetails.find(".last-name>input");
+            });
+
+            test("should set last name to value from props", () => {
+
+                expect(lastNameInput.prop('value')).toEqual(properties.customerDetails.lastName);
+            });
+
+            test("should update customer details when last name is changed", () => {
+                const fieldName = "lastName";
+                const updatedLastName = chance.string();
+
+                lastNameInput.simulate('change', {target: {name: fieldName, value: updatedLastName}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedLastName)).toBe(true);
+            });
+        });
     });
 
     test("should have a street address", () => {
@@ -76,19 +123,5 @@ describe("CustomerDetails", () => {
 
         expect(lastName.length).toEqual(1);
         expect(lastName.text()).toContain("Email");
-    });
-
-    test("should set last name to value from props", () => {
-        const lastNameInput = customerDetails.find(".last-name>input");
-
-        expect(lastNameInput.prop('value')).toEqual(properties.customerDetails.lastName);
-    });
-
-    test("should call action creator when last name is changed", () => {
-        const lastNameInput = customerDetails.find(".last-name>input");
-
-        lastNameInput.simulate('change', {target: {value: 'ugh'}});
-
-        expect(updateLastNameAC.calledOnce).toBe(true);
     });
 });

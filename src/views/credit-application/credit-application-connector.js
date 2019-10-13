@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import CreditApplicationContainer from "./credit-application-container";
-import {updateLastName} from "../../action-creators/update-customer-details";
+import {updateCustomerDetails} from "../../action-creators/update-customer-details";
 
 export const mapStateToProps = state => {
     return {
@@ -9,7 +9,7 @@ export const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = {
-    updateLastName
+    updateCustomerDetails
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreditApplicationContainer);

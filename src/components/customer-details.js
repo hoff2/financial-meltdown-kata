@@ -11,18 +11,30 @@ const CustomerDetails = (props) => {
             First Name
             <input
                 type="text"
-                name="name"
+                name="firstName"
                 value={props.customerDetails.firstName}
-                onChange={() => {}} />
+                onChange={
+                    (event) => {
+                        props.updateCustomerDetails(
+                            props.customerDetails,
+                            event.target.name,
+                            event.target.value)
+                    }} />
         </label>
 
         <label className='last-name'>
             Last Name
             <input
                 type="text"
-                name="name"
+                name="lastName"
                 value={props.customerDetails.lastName}
-                onChange={(event) => props.updateLastName(event.target.value)} />
+                onChange={
+                    (event) => {
+                        props.updateCustomerDetails(
+                            props.customerDetails,
+                            event.target.name,
+                            event.target.value)
+                    }} />
         </label>
 
         <label className='street-address'>
@@ -74,7 +86,7 @@ const CustomerDetails = (props) => {
 
 CustomerDetails.propTypes = {
     customerDetails: PropTypes.instanceOf(CustomerDetailsData),
-    updateLastName: PropTypes.func
+    updateCustomerDetails: PropTypes.func
 };
 
 export default CustomerDetails;

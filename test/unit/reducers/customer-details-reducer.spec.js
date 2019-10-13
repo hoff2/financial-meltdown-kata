@@ -1,7 +1,7 @@
 import CustomerDetailsData from "../../../src/state/customer-details-data";
 import customerDetailsReducer from "../../../src/reducers/customer-details-reducer";
 import Chance from 'chance';
-import {UPDATE_LAST_NAME} from "../../../src/action-creators/actions";
+import {UPDATE_CUSTOMER_DETAILS, UPDATE_LAST_NAME} from "../../../src/action-creators/actions";
 
 const chance = new Chance();
 
@@ -16,8 +16,8 @@ const initialState = CustomerDetailsData({
 });
 
 describe("CustomerDetailsReducer", () => {
-    describe("updateLastName", () => {
-        test("should update the last name property in customer details", () => {
+    describe("updateCustomerDetails", () => {
+        test("should update a specified property with a specified value", () => {
             const updatedLastName = chance.string();
             const expectedUpdatedState = CustomerDetailsData.update(initialState, {
                 lastName: {
@@ -25,13 +25,13 @@ describe("CustomerDetailsReducer", () => {
                 }
             });
             const action = {
-                type: UPDATE_LAST_NAME,
-                payload: updatedLastName
+                type: UPDATE_CUSTOMER_DETAILS,
+                payload: expectedUpdatedState
             };
 
             const reducerResult = customerDetailsReducer(initialState, action);
 
             expect(reducerResult).toEqual(expectedUpdatedState);
         });
-    });
+    })
 });
