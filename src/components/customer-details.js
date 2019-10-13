@@ -7,13 +7,67 @@ const CustomerDetails = (props) => {
     <div>
         <header>{'Customer Details'}</header>
 
+        <label className='first-name'>
+            First Name
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.firstName}
+                onChange={() => {}} />
+        </label>
+
         <label className='last-name'>
-            Last Name:
+            Last Name
             <input
                 type="text"
                 name="name"
                 value={props.customerDetails.lastName}
                 onChange={(event) => props.updateLastName(event.target.value)} />
+        </label>
+
+        <label className='street-address'>
+            Street Address
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.streetAddress}
+                onChange={() => {}} />
+        </label>
+
+        <label className='city'>
+            City
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.city}
+                onChange={() => {}} />
+        </label>
+
+        <label className='state'>
+            State
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.state}
+                onChange={() => {}} />
+        </label>
+
+        <label className='phone'>
+            Phone
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.phone}
+                onChange={() => {}} />
+        </label>
+
+        <label className='email'>
+            Email
+            <input
+                type="text"
+                name="name"
+                value={props.customerDetails.email}
+                onChange={() => {}} />
         </label>
     </div>
 )};
