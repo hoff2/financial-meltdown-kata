@@ -21,7 +21,7 @@ const FinancedItem = (props) => {
     };
 
     return (
-        <div>
+        <div className='financedItem'>
             <label className='itemName'>
                 Item Name
                 <input

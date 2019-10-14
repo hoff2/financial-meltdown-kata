@@ -1,5 +1,19 @@
 import {getDefaultFinancedItem} from "../state/financed-item-data";
-import {UPDATE_FINANCED_ITEMS} from "../action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../action-creators/actions";
+import FinancedItemData from "../state/financed-item-data";
+
+const addFinancedItem = (state) => {
+    const updatedFinancedItems = state.slice();
+
+    const newFinancedItem = FinancedItemData({
+        itemName: "",
+        price: 0.00
+    });
+
+    updatedFinancedItems.push(newFinancedItem);
+
+    return updatedFinancedItems;
+};
 
 const updateFinancedItems = (state, action) => {
     const updatedFinancedItems = state.slice();
@@ -13,6 +27,7 @@ const updateFinancedItems = (state, action) => {
 
 const financedItemsReducer = (state = [getDefaultFinancedItem(), getDefaultFinancedItem()], action) => {
     const reducers = {
+        [ADD_FINANCED_ITEM]: addFinancedItem,
         [UPDATE_FINANCED_ITEMS]: updateFinancedItems
     };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import financedItemsReducer from "../../../src/reducers/financed-items-reducer";
-import {UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
 import Chance from 'chance';
 import FinancedItemData from "../../../src/state/financed-item-data";
 
@@ -41,5 +41,15 @@ describe("FinancedItemsReducer", () => {
         const reducerResult = financedItemsReducer(initialState, action);
 
         expect(reducerResult).toEqual(expectedUpdatedState);
+    });
+
+    test("should add an empty financed item", () => {
+        const action = {
+            type: ADD_FINANCED_ITEM
+        };
+
+        const reducerResult = financedItemsReducer(initialState, action);
+
+        expect(reducerResult.length).toEqual(initialState.length + 1);
     });
 });

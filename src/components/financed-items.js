@@ -17,8 +17,8 @@ const FinancedItems = (props) => {
                     updateFinancedItems={props.updateFinancedItems}/>
             })}
         </div>
-        <div>
-            <button onClick={props.addFinancedItem()}>{'Add Item'}</button>
+        <div className='addItem'>
+            <button onClick={props.addFinancedItem}>{'Add Item'}</button>
         </div>
     </div>
 )};
