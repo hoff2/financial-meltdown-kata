@@ -17,10 +17,14 @@ const FinancedItems = (props) => {
                     updateFinancedItems={props.updateFinancedItems}/>
             })}
         </div>
+        <div>
+            <button onClick={props.addFinancedItem()}>{'Add Item'}</button>
+        </div>
     </div>
 )};
 
 FinancedItems.propTypes = {
+    addFinancedItem: PropTypes.func,
     financedItems: PropTypes.arrayOf(PropTypes.instanceOf(FinancedItemData)),
     updateFinancedItems: PropTypes.func
 };

@@ -11,6 +11,7 @@ export const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = {
+    addFinancedItem: () => { return () => {}},
     updateCustomerDetails,
     updateFinancedItems
 };
