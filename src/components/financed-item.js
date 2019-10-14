@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import FinancedItemData from "../state/financed-item-data";
+import '../styles/financed-items.css';
 
 const FinancedItem = (props) => {
 
@@ -21,38 +22,38 @@ const FinancedItem = (props) => {
     };
 
     return (
-        <div className='financedItem'>
-            <label className='itemName'>
+        <div className='financedItem row'>
+            <div className='itemName column'>
                 Item Name
                 <input
                     type="text"
                     name="itemName"
                     value={props.financedItem.itemName}
                     onChange={(event) => updateHandler(event)} />
-            </label>
+            </div>
 
-            <label className='price'>
+            <div className='price column'>
                 Price
                 <input
                     type="text"
                     name="price"
                     value={props.financedItem.price}
                     onChange={(event) => updateHandler(event)} />
-            </label>
+            </div>
 
-            <label className='minimum-payment'>
+            <div className='minimum-payment column'>
                 Minimum Payment
                 <div className='value'>
                     {props.financedItem.minimumPayment}
                 </div>
-            </label>
+            </div>
 
-            <label className='rate'>
+            <div className='rate column'>
                 Rate
                 <div className='value'>
                     {props.financedItem.rate}
                 </div>
-            </label>
+            </div>
         </div>
     )
 };

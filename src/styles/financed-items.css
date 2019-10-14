@@ -1,0 +1,17 @@
+.financedItem {
+    margin: 15px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-basis: 100%;
+}

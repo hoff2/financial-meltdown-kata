@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerDetailsData from "../state/customer-details-data";
+import '../styles/customer-details.css';
 
 const CustomerDetails = (props) => {
 
@@ -13,71 +14,77 @@ const CustomerDetails = (props) => {
     };
 
     return (
-    <div>
+    <div className='customer-details'>
         <header>{'Customer Details'}</header>
 
-        <label className='first-name'>
-            First Name
-            <input
-                type="text"
-                name="firstName"
-                value={props.customerDetails.firstName}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+        <div className='row'>
+            <div className='first-name column'>
+                {'First Name'}
+                <input
+                    type="text"
+                    name="firstName"
+                    value={props.customerDetails.firstName}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
 
-        <label className='last-name'>
-            Last Name
-            <input
-                type="text"
-                name="lastName"
-                value={props.customerDetails.lastName}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+            <div className='last-name column'>
+                {'Last Name'}
+                <input
+                    type="text"
+                    name="lastName"
+                    value={props.customerDetails.lastName}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
+        </div>
 
-        <label className='street-address'>
-            Street Address
-            <input
-                type="text"
-                name="streetAddress"
-                value={props.customerDetails.streetAddress}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+        <div className='row'>
+            <div className='street-address column'>
+                Street Address
+                <input
+                    type="text"
+                    name="streetAddress"
+                    value={props.customerDetails.streetAddress}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
 
-        <label className='city'>
-            City
-            <input
-                type="text"
-                name="city"
-                value={props.customerDetails.city}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+            <div className='city column'>
+                City
+                <input
+                    type="text"
+                    name="city"
+                    value={props.customerDetails.city}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
 
-        <label className='state'>
-            State
-            <input
-                type="text"
-                name="state"
-                value={props.customerDetails.state}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+            <div className='state column'>
+                State
+                <input
+                    type="text"
+                    name="state"
+                    value={props.customerDetails.state}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
+        </div>
 
-        <label className='phone'>
-            Phone
-            <input
-                type="text"
-                name="phone"
-                value={props.customerDetails.phone}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+        <div className='row'>
+            <div className='phone column'>
+                Phone
+                <input
+                    type="text"
+                    name="phone"
+                    value={props.customerDetails.phone}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
 
-        <label className='email'>
-            Email
-            <input
-                type="text"
-                name="email"
-                value={props.customerDetails.email}
-                onChange={(event) => updateHandler(event)} />
-        </label>
+            <div className='email column'>
+                Email
+                <input
+                    type="text"
+                    name="email"
+                    value={props.customerDetails.email}
+                    onChange={(event) => updateHandler(event)} />
+            </div>
+        </div>
     </div>
 )};
 
