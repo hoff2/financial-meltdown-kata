@@ -6,7 +6,6 @@ describe("FinancedItemsReducer", () => {
         test("should return initial state by default", () => {
             const reducerResult = financedItemsReducer();
 
-            expect(reducerResult.length).toEqual(1);
-            expect(reducerResult[0]).toEqual(getDefaultFinancedItem());
+            expect(reducerResult.length).toEqual(2);
         });
 });

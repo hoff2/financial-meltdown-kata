@@ -4,7 +4,8 @@ import {updateCustomerDetails} from "../../action-creators/update-customer-detai
 
 export const mapStateToProps = state => {
     return {
-        customerDetails: state.customerDetails
+        customerDetails: state.customerDetails,
+        financedItems: state.financedItems
     };
 };
 

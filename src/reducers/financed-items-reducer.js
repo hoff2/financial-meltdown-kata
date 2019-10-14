@@ -1,6 +1,6 @@
 import {getDefaultFinancedItem} from "../state/financed-item-data";
 
-const financedItemsReducer = (state = [getDefaultFinancedItem()]) => {
+const financedItemsReducer = (state = [getDefaultFinancedItem(), getDefaultFinancedItem()]) => {
     return state;
 };
 

@@ -10,7 +10,7 @@ const InitialState = t.struct({
 export const getInitialState = () => {
     return InitialState({
         customerDetails: getDefaultCustomerDetails(),
-        financedItems: [getDefaultFinancedItem()]
+        financedItems: [getDefaultFinancedItem(), getDefaultFinancedItem()]
     })
 };
 
