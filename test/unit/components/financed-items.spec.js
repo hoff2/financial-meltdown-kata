@@ -10,6 +10,8 @@ const chance = new Chance();
 describe("FinancedItems", () => {
     let financedItems;
 
+    const updateFinancedItemsACMock = () => {};
+
     const financedItem1 = FinancedItemData({
         itemName: chance.string(),
         price: chance.floating(),
@@ -25,7 +27,8 @@ describe("FinancedItems", () => {
     });
 
     const properties = {
-        financedItems: [financedItem1, financedItem2]
+        financedItems: [financedItem1, financedItem2],
+        updateFinancedItems: updateFinancedItemsACMock
     };
 
     beforeEach(() => {
@@ -39,10 +42,36 @@ describe("FinancedItems", () => {
            expect(header.length).toEqual(1);
         });
 
-        test("should display all financed items", () => {
-           const financedItemInstances = financedItems.find(FinancedItem);
+        describe("financed item instances", () => {
+            let financedItemInstances;
 
-           expect(financedItemInstances.length).toEqual(properties.financedItems.length);
+            beforeEach(() => {
+                financedItemInstances = financedItems.find(FinancedItem);
+            });
+
+            test("should display all financed items", () => {
+               expect(financedItemInstances.length).toEqual(properties.financedItems.length);
+            });
+
+            describe("first item", () => {
+                let firstItem;
+
+                beforeEach(() => {
+                    firstItem = financedItemInstances.get(0);
+                });
+
+                test("should supply itemIndex property to financed item", () => {
+                    expect(firstItem.props.itemIndex).toEqual(0);
+                });
+
+                test("should supply financedItem property to financed item", () => {
+                    expect(firstItem.props.financedItem).toEqual(financedItem1);
+                });
+
+                test("should supply updateFinancedItems action creator to financed item", () => {
+                    expect(firstItem.props.updateFinancedItems).toEqual(updateFinancedItemsACMock);
+                });
+            });
         });
     })
 });

@@ -36,5 +36,9 @@ describe("CreditApplicationConnector", () => {
         test("should provide an updateCustomerDetails action creator", () => {
             expect(mapDispatchToProps.hasOwnProperty('updateCustomerDetails')).toEqual(true);
         });
+
+        test("should provide an updateFinancedItems action creator", () => {
+            expect(mapDispatchToProps.hasOwnProperty('updateFinancedItems')).toEqual(true);
+        });
     });
 });

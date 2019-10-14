@@ -86,7 +86,7 @@ describe("Financed Item", () => {
 
                 priceInput.simulate('change', {target: {name: fieldName, value: updatedPrice}});
 
-                expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, updatedPrice)).toBe(true);
+                expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, parseFloat(updatedPrice))).toBe(true);
             });
         });
     });

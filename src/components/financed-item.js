@@ -5,12 +5,19 @@ import FinancedItemData from "../state/financed-item-data";
 const FinancedItem = (props) => {
 
     const updateHandler = (event) => {
-        props.updateFinancedItems(
-            props.itemIndex,
-            props.financedItem,
-            event.target.name,
-            event.target.value
-        )
+        if (event.target.name === 'itemName') {
+            props.updateFinancedItems(
+                props.itemIndex,
+                props.financedItem,
+                event.target.name,
+                event.target.value)
+        } else {
+            props.updateFinancedItems(
+                props.itemIndex,
+                props.financedItem,
+                event.target.name,
+                parseFloat(event.target.value))
+        }
     };
 
     return (
