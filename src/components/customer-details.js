@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import CustomerDetailsData from "../state/customer-details-data";
 
 const CustomerDetails = (props) => {
+
+    const updateHandler = (event) => {
+        props.updateCustomerDetails(
+            props.customerDetails,
+            event.target.name,
+            event.target.value
+        )
+    };
+
     return (
     <div>
         <header>{'Customer Details'}</header>
@@ -13,13 +22,7 @@ const CustomerDetails = (props) => {
                 type="text"
                 name="firstName"
                 value={props.customerDetails.firstName}
-                onChange={
-                    (event) => {
-                        props.updateCustomerDetails(
-                            props.customerDetails,
-                            event.target.name,
-                            event.target.value)
-                    }} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='last-name'>
@@ -28,58 +31,52 @@ const CustomerDetails = (props) => {
                 type="text"
                 name="lastName"
                 value={props.customerDetails.lastName}
-                onChange={
-                    (event) => {
-                        props.updateCustomerDetails(
-                            props.customerDetails,
-                            event.target.name,
-                            event.target.value)
-                    }} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='street-address'>
             Street Address
             <input
                 type="text"
-                name="name"
+                name="streetAddress"
                 value={props.customerDetails.streetAddress}
-                onChange={() => {}} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='city'>
             City
             <input
                 type="text"
-                name="name"
+                name="city"
                 value={props.customerDetails.city}
-                onChange={() => {}} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='state'>
             State
             <input
                 type="text"
-                name="name"
+                name="state"
                 value={props.customerDetails.state}
-                onChange={() => {}} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='phone'>
             Phone
             <input
                 type="text"
-                name="name"
+                name="phone"
                 value={props.customerDetails.phone}
-                onChange={() => {}} />
+                onChange={(event) => updateHandler(event)} />
         </label>
 
         <label className='email'>
             Email
             <input
                 type="text"
-                name="name"
+                name="email"
                 value={props.customerDetails.email}
-                onChange={() => {}} />
+                onChange={(event) => updateHandler(event)} />
         </label>
     </div>
 )};

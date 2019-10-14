@@ -90,38 +90,158 @@ describe("CustomerDetails", () => {
         });
     });
 
-    test("should have a street address", () => {
-        const lastName = customerDetails.find(".street-address");
+    describe("Street Address", () => {
+        test("should have a street address", () => {
+            const lastName = customerDetails.find(".street-address");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("Street Address");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("Street Address");
+        });
+
+        describe("input", () => {
+            let streetAddressInput;
+
+            beforeEach(() => {
+                streetAddressInput = customerDetails.find(".street-address>input");
+            });
+
+            test("should set street address to value from props", () => {
+
+                expect(streetAddressInput.prop('value')).toEqual(properties.customerDetails.streetAddress);
+            });
+
+            test("should update customer details when street address is changed", () => {
+                const fieldName = "streetAddress";
+                const updatedStreetAddress = chance.string();
+
+                streetAddressInput.simulate('change', {target: {name: fieldName, value: updatedStreetAddress}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedStreetAddress)).toBe(true);
+            });
+        });
     });
 
-    test("should have a city", () => {
-        const lastName = customerDetails.find(".city");
+    describe("City", () => {
+        test("should have a city", () => {
+            const lastName = customerDetails.find(".city");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("City");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("City");
+        });
+
+        describe("input", () => {
+            let cityInput;
+
+            beforeEach(() => {
+                cityInput = customerDetails.find(".city>input");
+            });
+
+            test("should set city to value from props", () => {
+
+                expect(cityInput.prop('value')).toEqual(properties.customerDetails.city);
+            });
+
+            test("should update customer details when city is changed", () => {
+                const fieldName = "city";
+                const updatedCity = chance.string();
+
+                cityInput.simulate('change', {target: {name: fieldName, value: updatedCity}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedCity)).toBe(true);
+            });
+        });
     });
 
-    test("should have a state", () => {
-        const lastName = customerDetails.find(".state");
+    describe("State", () => {
+        test("should have a state", () => {
+            const lastName = customerDetails.find(".state");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("State");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("State");
+        });
+
+        describe("input", () => {
+            let stateInput;
+
+            beforeEach(() => {
+                stateInput = customerDetails.find(".state>input");
+            });
+
+            test("should set state to value from props", () => {
+
+                expect(stateInput.prop('value')).toEqual(properties.customerDetails.state);
+            });
+
+            test("should update customer details when state is changed", () => {
+                const fieldName = "state";
+                const updateState = chance.string();
+
+                stateInput.simulate('change', {target: {name: fieldName, value: updateState}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updateState)).toBe(true);
+            });
+        });
     });
 
-    test("should have a phone", () => {
-        const lastName = customerDetails.find(".phone");
+    describe("Phone", () => {
+        test("should have a phone", () => {
+            const lastName = customerDetails.find(".phone");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("Phone");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("Phone");
+        });
+
+        describe("input", () => {
+            let phoneInput;
+
+            beforeEach(() => {
+                phoneInput = customerDetails.find(".phone>input");
+            });
+
+            test("should set phone to value from props", () => {
+
+                expect(phoneInput.prop('value')).toEqual(properties.customerDetails.phone);
+            });
+
+            test("should update customer details when phone is changed", () => {
+                const fieldName = "phone";
+                const updatedPhone = chance.string();
+
+                phoneInput.simulate('change', {target: {name: fieldName, value: updatedPhone}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedPhone)).toBe(true);
+            });
+        });
     });
 
-    test("should have a email", () => {
-        const lastName = customerDetails.find(".email");
+    describe("Email", () => {
+        test("should have a email", () => {
+            const lastName = customerDetails.find(".email");
 
-        expect(lastName.length).toEqual(1);
-        expect(lastName.text()).toContain("Email");
+            expect(lastName.length).toEqual(1);
+            expect(lastName.text()).toContain("Email");
+        });
+
+        describe("input", () => {
+            let emailInput;
+
+            beforeEach(() => {
+                emailInput = customerDetails.find(".email>input");
+            });
+
+            test("should set email to value from props", () => {
+
+                expect(emailInput.prop('value')).toEqual(properties.customerDetails.email);
+            });
+
+            test("should update customer details when email is changed", () => {
+                const fieldName = "email";
+                const updatedEmail = chance.string();
+
+                emailInput.simulate('change', {target: {name: fieldName, value: updatedEmail}});
+
+                expect(updateCustomerDetailsAC.calledWithExactly(properties.customerDetails, fieldName, updatedEmail)).toBe(true);
+            });
+        });
     });
 });
