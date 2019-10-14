@@ -1,7 +1,7 @@
 import t from 'tcomb';
 
 const FinancedItemData = t.struct({
-    item: t.String,
+    itemName: t.String,
     price: t.Number,
     minimumPayment: t.maybe(t.Number),
     rate: t.maybe(t.Number)
@@ -9,7 +9,7 @@ const FinancedItemData = t.struct({
 
 export const getDefaultFinancedItem = () => {
     return FinancedItemData({
-        item: "Product ABC",
+        itemName: "Product ABC",
         price: 123.45
     })
 };
