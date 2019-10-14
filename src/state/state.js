@@ -1,15 +1,16 @@
 import t from 'tcomb';
-import CustomerDetailsData from "./customer-details-data";
+import CustomerDetailsData, {getDefaultCustomerDetails} from "./customer-details-data";
+import FinancedItemData, {getDefaultFinancedItem} from "./financed-item-data";
 
 const InitialState = t.struct({
-    customerDetails: t.instanceOf(CustomerDetailsData)
+    customerDetails: t.instanceOf(CustomerDetailsData),
+    financedItems: t.list(t.instanceOf(FinancedItemData))
 }, 'InitialState');
 
 export const getInitialState = () => {
     return InitialState({
-        customerDetails: CustomerDetailsData({
-            lastName: 'tdawg'
-        })
+        customerDetails: getDefaultCustomerDetails(),
+        financedItems: [getDefaultFinancedItem()]
     })
 };
 
