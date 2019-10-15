@@ -15,8 +15,13 @@ public class CustomerDetailsController {
 
     public CustomerDetailsController() {}
 
+    @GetMapping(produces = APPLICATION_JSON_UTF8_VALUE)
+    public Object getCustomerDetails() {
+        return new ArrayList<>();
+    }
+
     @PostMapping(produces = APPLICATION_JSON_UTF8_VALUE)
-    public Object getCourses() {
+    public Object updateCustomerDetails() {
         return new ArrayList<>();
     }
 }
