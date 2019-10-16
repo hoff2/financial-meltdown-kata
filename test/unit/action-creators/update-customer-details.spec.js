@@ -1,5 +1,9 @@
 import * as sinon from "sinon";
-import {persistCustomerDetails, updateCustomerDetails} from "../../../src/action-creators/update-customer-details";
+import {
+    fetchCustomerDetails,
+    persistCustomerDetails,
+    updateCustomerDetails
+} from "../../../src/action-creators/update-customer-details";
 import Chance from 'chance';
 import {UPDATE_CUSTOMER_DETAILS} from "../../../src/action-creators/actions";
 import CustomerDetailsData from "../../../src/state/customer-details-data";
@@ -19,7 +23,8 @@ const initialCustomerDetails = CustomerDetailsData({
 
 describe("UpdateCustomerDetails", () => {
     const dispatchSpy = sinon.spy();
-    const apiStub = sinon.stub(CustomerDetailsAPI, 'updateCustomerDetailsAPI');
+    const apiPostStub = sinon.stub(CustomerDetailsAPI, 'updateCustomerDetailsAPI');
+    const apiGetStub = sinon.stub(CustomerDetailsAPI, 'getCustomerDetailsAPI');
 
     describe("updateCustomerDetails", () => {
         test("should update customer details property with value", () => {
@@ -35,17 +40,28 @@ describe("UpdateCustomerDetails", () => {
             };
 
             updateCustomerDetails(initialCustomerDetails, "firstName", expectedCustomerDetails.firstName)(dispatchSpy);
+
             expect(dispatchSpy.calledWithExactly(expectedEvent)).toEqual(true);
         });
     });
 
     describe("persistCustomerDetails", () => {
         test("should call the update customer details api with current details", () => {
-            apiStub.returns(Promise.resolve({}));
+            apiPostStub.returns(Promise.resolve({}));
 
-            persistCustomerDetails({});
+            persistCustomerDetails({})(dispatchSpy);
 
-            expect(apiStub.calledWith({})).toEqual(true);
+            expect(apiPostStub.calledWith({})).toEqual(true);
+        });
+    });
+
+    describe("fetchCustomerDetails", () => {
+        test("should call get customer details api and store result", () => {
+            apiGetStub.returns(Promise.resolve(initialCustomerDetails));
+
+            fetchCustomerDetails()(dispatchSpy);
+
+            expect(apiGetStub.calledWith()).toEqual(true);
         });
     });
 });

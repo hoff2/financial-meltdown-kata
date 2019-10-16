@@ -5,6 +5,7 @@ import CreditApplicationContainer from "../../../../src/views/credit-application
 import Chance from 'chance';
 import CustomerDetails from "../../../../src/components/customer-details";
 import FinancedItems from "../../../../src/components/financed-items";
+import * as sinon from "sinon";
 
 const chance = new Chance();
 
@@ -12,7 +13,11 @@ describe("CreditApplicationContainer", () => {
 
     let container;
 
-    const properties = {};
+    const fetchCustomerDetailsAC = sinon.spy();
+
+    const properties = {
+        fetchCustomerDetails: fetchCustomerDetailsAC
+    };
 
     beforeEach(() => {
         container = shallow(<CreditApplicationContainer {...properties}/>);

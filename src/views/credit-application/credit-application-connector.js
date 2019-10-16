@@ -1,6 +1,10 @@
 import {connect} from 'react-redux';
 import CreditApplicationContainer from "./credit-application-container";
-import {persistCustomerDetails, updateCustomerDetails} from "../../action-creators/update-customer-details";
+import {
+    fetchCustomerDetails,
+    persistCustomerDetails,
+    updateCustomerDetails
+} from "../../action-creators/update-customer-details";
 import {updateFinancedItems} from "../../action-creators/update-financed-items";
 import {addFinancedItem} from "../../action-creators/add-financed-item";
 
@@ -13,6 +17,7 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = {
     addFinancedItem,
+    fetchCustomerDetails,
     persistCustomerDetails,
     updateCustomerDetails,
     updateFinancedItems

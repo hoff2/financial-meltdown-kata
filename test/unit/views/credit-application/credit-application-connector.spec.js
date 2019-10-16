@@ -48,5 +48,9 @@ describe("CreditApplicationConnector", () => {
         test("should provide an persistCustomerDetails action creator", () => {
             expect(mapDispatchToProps.hasOwnProperty('persistCustomerDetails')).toEqual(true);
         });
+
+        test("should provide an fetchCustomerDetails action creator", () => {
+            expect(mapDispatchToProps.hasOwnProperty('fetchCustomerDetails')).toEqual(true);
+        });
     });
 });

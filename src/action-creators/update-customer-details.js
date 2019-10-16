@@ -1,6 +1,6 @@
 import {UPDATE_CUSTOMER_DETAILS} from "./actions";
 import CustomerDetailsData from "../state/customer-details-data";
-import {updateCustomerDetailsAPI} from "../api/customer-details-api";
+import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "../api/customer-details-api";
 
 export const updateCustomerDetails = (customerDetails, name, value) => {
     const updatedCustomerDetails = CustomerDetailsData.update(customerDetails, {
@@ -20,12 +20,26 @@ export const updateCustomerDetails = (customerDetails, name, value) => {
 
 export const persistCustomerDetails = (customerDetails) => {
     return dispatch => {
-    updateCustomerDetailsAPI(customerDetails)
-        .then(() => {
-            dispatch({
-                type: 'SOMETHING'
-            })
-        });
+        updateCustomerDetailsAPI(customerDetails)
+            .then(() => {
+                dispatch({
+                    type: 'NOOP'
+                });
+            });
+        return null;
+    };
+};
 
+export const fetchCustomerDetails = () => {
+    return dispatch => {
+        getCustomerDetailsAPI()
+            .then((response) => {
+                const customerDetails = CustomerDetailsData(response);
+                dispatch({
+                    type: UPDATE_CUSTOMER_DETAILS,
+                    payload: customerDetails
+                });
+            });
+        return null;
     };
 };

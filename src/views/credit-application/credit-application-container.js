@@ -1,15 +1,25 @@
 import React from 'react';
 import CustomerDetails from "../../components/customer-details";
 import FinancedItems from "../../components/financed-items";
+import PropTypes from 'prop-types';
 
-const CreditApplicationContainer = (props) => (
-    <div>
-        <header>Credit Application</header>
-        <CustomerDetails {...props} />
-        <FinancedItems {...props} />
-    </div>
-);
+class CreditApplicationContainer extends React.Component {
+    componentDidMount() {
+        this.props.fetchCustomerDetails();
+    };
 
-CreditApplicationContainer.propTypes = {};
+    render() {
+        return (
+            <div>
+                <header>Credit Application</header>
+                <CustomerDetails {...this.props} />
+                <FinancedItems {...this.props} />
+            </div>)
+    }
+}
+
+CreditApplicationContainer.propTypes = {
+    fetchCustomerDetails: PropTypes.func
+};
 
 export default CreditApplicationContainer;

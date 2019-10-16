@@ -39,7 +39,7 @@ describe("CustomerDetails", () => {
         });
 
         test("should call persist customer details action creator when button is clicked", () => {
-            const updateButton = customerDetails.find(".update-customer-details");
+            const updateButton = customerDetails.find(".update-customer-details>button");
 
             updateButton.simulate("click");
 
