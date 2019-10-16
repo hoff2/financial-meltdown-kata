@@ -1,10 +1,11 @@
 import * as sinon from "sinon";
-import {updateCustomerDetails, updateLastName} from "../../../src/action-creators/update-customer-details";
+import {persistCustomerDetails, updateCustomerDetails} from "../../../src/action-creators/update-customer-details";
 import Chance from 'chance';
-import {UPDATE_CUSTOMER_DETAILS, UPDATE_LAST_NAME} from "../../../src/action-creators/actions";
+import {UPDATE_CUSTOMER_DETAILS} from "../../../src/action-creators/actions";
 import CustomerDetailsData from "../../../src/state/customer-details-data";
+import * as CustomerDetailsAPI from "../../../src/api/customer-details-api";
 
-const chance = new Chance()
+const chance = new Chance();
 
 const initialCustomerDetails = CustomerDetailsData({
     firstName: chance.string(),
@@ -18,6 +19,7 @@ const initialCustomerDetails = CustomerDetailsData({
 
 describe("UpdateCustomerDetails", () => {
     const dispatchSpy = sinon.spy();
+    const apiStub = sinon.stub(CustomerDetailsAPI, 'updateCustomerDetailsAPI');
 
     describe("updateCustomerDetails", () => {
         test("should update customer details property with value", () => {
@@ -35,5 +37,15 @@ describe("UpdateCustomerDetails", () => {
             updateCustomerDetails(initialCustomerDetails, "firstName", expectedCustomerDetails.firstName)(dispatchSpy);
             expect(dispatchSpy.calledWithExactly(expectedEvent)).toEqual(true);
         });
-    })
+    });
+
+    describe("persistCustomerDetails", () => {
+        test("should call the update customer details api with current details", () => {
+            apiStub.returns(Promise.resolve({}));
+
+            persistCustomerDetails({});
+
+            expect(apiStub.calledWith({})).toEqual(true);
+        });
+    });
 });

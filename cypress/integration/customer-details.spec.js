@@ -1,4 +1,7 @@
 /// <reference types="Cypress" />
+import Chance from 'chance';
+
+const chance = new Chance();
 
 context('Customer Details', () => {
     beforeEach(() => {
@@ -45,5 +48,18 @@ context('Customer Details', () => {
             // Delay each keypress by 0.1 sec
             .type('slowCustomerLastName', { delay: 100 })
             .should('have.value', 'slowCustomerLastName')
+    });
+
+    it('should retrieve last updated customer details when page refreshed', () => {
+        const expectedFirstName = chance.string();
+        cy.get('.first-name>input')
+            .type('{selectall}{del}')
+            .type(expectedFirstName).should('have.value', expectedFirstName);
+
+        cy.get('.update-customer-details>button').click();
+
+        cy.visit('/');
+
+        cy.get('.first-name>input').should('have.value', expectedFirstName);
     });
 });

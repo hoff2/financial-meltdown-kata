@@ -1,5 +1,6 @@
 import {UPDATE_CUSTOMER_DETAILS} from "./actions";
 import CustomerDetailsData from "../state/customer-details-data";
+import {updateCustomerDetailsAPI} from "../api/customer-details-api";
 
 export const updateCustomerDetails = (customerDetails, name, value) => {
     const updatedCustomerDetails = CustomerDetailsData.update(customerDetails, {
@@ -15,4 +16,16 @@ export const updateCustomerDetails = (customerDetails, name, value) => {
         });
         return null;
     }
+};
+
+export const persistCustomerDetails = (customerDetails) => {
+    return dispatch => {
+    updateCustomerDetailsAPI(customerDetails)
+        .then(() => {
+            dispatch({
+                type: 'SOMETHING'
+            })
+        });
+
+    };
 };

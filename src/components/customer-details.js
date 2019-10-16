@@ -85,11 +85,17 @@ const CustomerDetails = (props) => {
                     onChange={(event) => updateHandler(event)} />
             </div>
         </div>
+        <div className='row'>
+            <div className='update-customer-details'>
+                <button onClick={() => props.persistCustomerDetails(props.customerDetails)}>{'Update'}</button>
+            </div>
+        </div>
     </div>
 )};
 
 CustomerDetails.propTypes = {
     customerDetails: PropTypes.instanceOf(CustomerDetailsData),
+    persistCustomerDetails: PropTypes.func,
     updateCustomerDetails: PropTypes.func
 };
 

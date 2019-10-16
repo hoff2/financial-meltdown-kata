@@ -10,6 +10,7 @@ const chance = new Chance();
 describe("CustomerDetails", () => {
     let customerDetails;
 
+    const persistCustomerDetailsAC = sinon.spy();
     const updateCustomerDetailsAC = sinon.spy();
 
     const properties = {
@@ -22,11 +23,28 @@ describe("CustomerDetails", () => {
             phone: chance.string(),
             email: chance.string()
         }),
+        persistCustomerDetails: persistCustomerDetailsAC,
         updateCustomerDetails: updateCustomerDetailsAC
     };
 
     beforeEach(() => {
         customerDetails = shallow(<CustomerDetails {...properties} />);
+    });
+
+    describe("update button", () => {
+        test("should have an update-customer-details button", () => {
+            const updateButton = customerDetails.find(".update-customer-details");
+
+            expect(updateButton.length).toEqual(1);
+        });
+
+        test("should call persist customer details action creator when button is clicked", () => {
+            const updateButton = customerDetails.find(".update-customer-details");
+
+            updateButton.simulate("click");
+
+            expect(persistCustomerDetailsAC.calledWithExactly(properties.customerDetails)).toEqual(true);
+        });
     });
 
     describe("First Name", () => {
