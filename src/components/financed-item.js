@@ -13,13 +13,17 @@ const FinancedItem = (props) => {
                 event.target.name,
                 event.target.value)
         } else {
+            const newValue = event.target.value ? parseFloat(event.target.value) : 0.0;
+
             props.updateFinancedItems(
                 props.itemIndex,
                 props.financedItem,
                 event.target.name,
-                parseFloat(event.target.value))
+                newValue)
         }
     };
+
+    const price = props.financedItem.price;
 
     return (
         <div className='financedItem row'>
@@ -37,7 +41,7 @@ const FinancedItem = (props) => {
                 <input
                     type="text"
                     name="price"
-                    value={props.financedItem.price}
+                    value={!price ? '' : price}
                     onChange={(event) => updateHandler(event)} />
             </div>
 

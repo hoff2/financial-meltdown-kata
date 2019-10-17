@@ -75,8 +75,29 @@ describe("Financed Item", () => {
                 priceInput = financedItem.find(".price>input");
             });
 
-            test("should set price to value from props", () => {
+            test("should set price to value from props if defined", () => {
                 expect(priceInput.prop('value')).toEqual(properties.financedItem.price);
+            });
+
+            test("should set price to empty if props is empty", () => {
+                const financedItemData = FinancedItemData({
+                    itemName: chance.string(),
+                    price: 0,
+                    minimumPayment: chance.floating(),
+                    rate: chance.floating()
+                });
+
+                const properties = {
+                    financedItem: financedItemData,
+                    itemIndex: 0,
+                    updateFinancedItems: updateFinancedItemsAC
+                };
+
+                financedItem = shallow(<FinancedItem {...properties} />);
+
+                const priceInput = financedItem.find(".price>input");
+
+                expect(priceInput.prop('value')).toEqual('');
             });
 
             test("should call update customer details when price is changed", () => {
@@ -87,6 +108,15 @@ describe("Financed Item", () => {
                 priceInput.simulate('change', {target: {name: fieldName, value: updatedPrice}});
 
                 expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, parseFloat(updatedPrice))).toBe(true);
+            });
+
+            test("should set price to zero if field is undefined", () => {
+                const fieldName = "price";
+                const itemIndex = 0;
+
+                priceInput.simulate('change', {target: {name: fieldName, value: undefined}});
+
+                expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, 0.0)).toBe(true);
             });
         });
     });
