@@ -23,14 +23,6 @@ public class FinancedItemServiceTest {
     }
 
     @Test
-    public void shouldCreateFinancedItemAndAddToRepository() {
-        FinancedItem updatedItem = financedItemService.postFinancedItem(financedItem);
-
-        assertSame(updatedItem, financedItem);
-        assertSame(financedItemService.getFinancedItems().get(0), financedItem);
-    }
-
-    @Test
     public void shouldAddIdToNewItemWithoutId() {
         FinancedItem updatedItem = financedItemService.postFinancedItem(financedItem);
 
@@ -48,6 +40,13 @@ public class FinancedItemServiceTest {
         FinancedItem updatedFinancedItem = financedItemService.postFinancedItem(financeItemToUpdate);
 
         assertEquals(updatedFinancedItem.getId(), createdFinancedItem.getId());
+    }
+
+    @Test
+    public void shouldAddPostedItemsToRepository() {
+        financedItemService.postFinancedItem(financedItem);
+
+        assertSame(financedItemService.getFinancedItems().get(0), financedItem);
     }
 
     private float randFloat(float min, float max) {
