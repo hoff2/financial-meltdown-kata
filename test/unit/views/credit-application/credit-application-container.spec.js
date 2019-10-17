@@ -44,10 +44,10 @@ describe("CreditApplicationContainer", () => {
     });
 
     test("should call fetch customer details on load", () => {
-        expect(fetchCustomerDetailsAC.calledOnce).toEqual(true);
+        expect(fetchCustomerDetailsAC.called).toEqual(true);
     });
 
     test("should call fetch financed items on load", () => {
-        expect(fetchFinancedItemsAC.calledOnce).toEqual(true);
+        expect(fetchFinancedItemsAC.called).toEqual(true);
     });
 });
