@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,6 +39,7 @@ public class FinancedItemsControllerTest {
     public void setup() {
         financedItem = new FinancedItem();
         financedItem.setItemName(UUID.randomUUID().toString());
+        financedItem.setPrice(new BigDecimal(0));
         service.postFinancedItem(financedItem);
     }
 
@@ -54,6 +56,7 @@ public class FinancedItemsControllerTest {
     public void postShouldRespondWithIdAndStatus201WhenNewItem() throws Exception {
         FinancedItem newFinancedItem = new FinancedItem();
         newFinancedItem.setItemName(UUID.randomUUID().toString());
+        newFinancedItem.setPrice(new BigDecimal(0));
 
         mockMvc.perform(post("/financedItems").contentType(MediaType.APPLICATION_JSON)
                 .content(serializeFinancedItem(newFinancedItem)))

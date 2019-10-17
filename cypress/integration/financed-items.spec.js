@@ -8,29 +8,32 @@ context('Financed Items', () => {
         cy.visit('/')
     });
 
-    it('should display persisted items when page is refreshed', () => {
-        const itemName0 = chance.string();
-        const itemName2 = chance.string();
+    it('should display persisted items w/ minimumPayment and rate when page is refreshed', () => {
+        const itemNameExisting = chance.string();
+        const itemNameNew = chance.string();
 
         cy.get('.itemName>input')
             .first()
             .type('{selectall}{del}')
-            .type(itemName0)
-            .should('have.value', itemName0);
+            .type(itemNameExisting)
+            .should('have.value', itemNameExisting);
 
         cy.get('.addItem>button').click();
 
         cy.get('.itemName>input')
             .last()
             .type('{selectall}{del}')
-            .type(itemName2)
-            .should('have.value', itemName2);
+            .type(itemNameNew)
+            .should('have.value', itemNameNew);
 
         cy.get('.persist-financed-items>button').click();
 
         cy.visit('/');
 
-        cy.get('.itemName>input').first().should('have.value', itemName0);
-        cy.get('.itemName>input').last().should('have.value', itemName2);
+        cy.get('.financedItem')
+            .each(($li, index, $lis) => {
+                expect($li.find('.minimum-payment').valueOf()).to.not.be.null;
+                expect($li.find('.rate').valueOf()).to.not.be.null;
+            });
     });
 });
