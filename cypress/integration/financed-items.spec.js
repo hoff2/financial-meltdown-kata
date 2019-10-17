@@ -8,22 +8,12 @@ context('Financed Items', () => {
         cy.visit('/')
     });
 
-    it('should add an empty financed item when add item button is clicked', () => {
-        cy.get('.financedItem').should('have.length', 2);
-
-        cy.get('.addItem>button').click();
-
-        cy.get('.financedItem').should('have.length', 3);
-    });
-
     it('should display persisted items when page is refreshed', () => {
         const itemName0 = chance.string();
         const itemName2 = chance.string();
 
-        cy.get('.financedItem').should('have.length', 2);
-
         cy.get('.itemName>input')
-            .eq(0)
+            .first()
             .type('{selectall}{del}')
             .type(itemName0)
             .should('have.value', itemName0);
@@ -31,7 +21,7 @@ context('Financed Items', () => {
         cy.get('.addItem>button').click();
 
         cy.get('.itemName>input')
-            .eq(2)
+            .last()
             .type('{selectall}{del}')
             .type(itemName2)
             .should('have.value', itemName2);
@@ -40,6 +30,7 @@ context('Financed Items', () => {
 
         cy.visit('/');
 
-        cy.get('.financedItem').should('have.length', 3);
+        cy.get('.itemName>input').first().should('have.value', itemName0);
+        cy.get('.itemName>input').last().should('have.value', itemName2);
     });
 });
