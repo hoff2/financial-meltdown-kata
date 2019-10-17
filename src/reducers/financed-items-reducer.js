@@ -29,7 +29,7 @@ const updateFinancedItems = (state, action) => {
     return action.payload;
 };
 
-const financedItemsReducer = (state = [getDefaultFinancedItem(), getDefaultFinancedItem()], action) => {
+const financedItemsReducer = (state = [getDefaultFinancedItem()], action) => {
     const reducers = {
         [ADD_FINANCED_ITEM]: addFinancedItem,
         [UPDATE_FINANCED_ITEM]: updateFinancedItem,

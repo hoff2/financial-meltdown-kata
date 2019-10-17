@@ -11,10 +11,10 @@ const FinancedItemData = t.struct({
 export const getDefaultFinancedItem = () => {
     return FinancedItemData({
         id: null,
-        itemName: "Product ABC",
-        price: 123.45,
-        minimumPayment: 234.56,
-        rate: 7.89
+        itemName: '',
+        price: 0.00,
+        minimumPayment: null,
+        rate: null
     })
 };
 

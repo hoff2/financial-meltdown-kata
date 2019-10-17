@@ -12,13 +12,13 @@ const CustomerDetailsData = t.struct({
 
 export const getDefaultCustomerDetails = () => {
     return CustomerDetailsData({
-        firstName: 'Allison',
-        lastName: 'Customer',
-        streetAddress: '1234 56th Street',
-        city: 'Des Moines',
-        state: 'IA',
-        phone: '(515) 555-5555',
-        email: 'allison@customer.com'
+        firstName: '',
+        lastName: '',
+        streetAddress: '',
+        city: '',
+        state: '',
+        phone: '',
+        email: ''
     })
 };
 
