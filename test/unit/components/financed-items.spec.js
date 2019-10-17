@@ -13,6 +13,7 @@ describe("FinancedItems", () => {
 
     const updateFinancedItemsACMock = () => {};
     const addFinancedItemAC = sinon.spy();
+    const persistFinancedItemsAC = sinon.spy();
 
     const financedItem1 = FinancedItemData({
         itemName: chance.string(),
@@ -31,6 +32,7 @@ describe("FinancedItems", () => {
     const properties = {
         addFinancedItem: addFinancedItemAC,
         financedItems: [financedItem1, financedItem2],
+        persistFinancedItems: persistFinancedItemsAC,
         updateFinancedItems: updateFinancedItemsACMock
     };
 
@@ -46,7 +48,7 @@ describe("FinancedItems", () => {
         });
 
         test("should have an add item button", () => {
-            const addButton = financedItems.find('button');
+            const addButton = financedItems.find('.addItem>button');
 
             expect(addButton.length).toEqual(1);
         });
@@ -85,11 +87,21 @@ describe("FinancedItems", () => {
 
         describe("add button", () => {
             test("should call add item action creator when button is clicked", () => {
-                const addButton = financedItems.find('button');
+                const addButton = financedItems.find('.addItem>button');
 
                 addButton.simulate("click");
 
                 expect(addFinancedItemAC.calledWithExactly()).toEqual(true);
+            });
+        });
+
+        describe("persist button", () => {
+            test("should call persist items action creator when button is clicked", () => {
+                const persistButton = financedItems.find('.persist-financed-items>button');
+
+                persistButton.simulate('click');
+
+                expect(persistFinancedItemsAC.calledWithExactly(properties.financedItems)).toEqual(true);
             });
         });
     })

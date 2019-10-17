@@ -14,9 +14,11 @@ describe("CreditApplicationContainer", () => {
     let container;
 
     const fetchCustomerDetailsAC = sinon.spy();
+    const fetchFinancedItemsAC = sinon.spy();
 
     const properties = {
-        fetchCustomerDetails: fetchCustomerDetailsAC
+        fetchCustomerDetails: fetchCustomerDetailsAC,
+        fetchFinancedItems: fetchFinancedItemsAC
     };
 
     beforeEach(() => {
@@ -39,5 +41,13 @@ describe("CreditApplicationContainer", () => {
         const financedItems = container.find(FinancedItems);
 
         expect(financedItems.length).toEqual(1);
+    });
+
+    test("should call fetch customer details on load", () => {
+        expect(fetchCustomerDetailsAC.calledOnce).toEqual(true);
+    });
+
+    test("should call fetch financed items on load", () => {
+        expect(fetchFinancedItemsAC.calledOnce).toEqual(true);
     });
 });

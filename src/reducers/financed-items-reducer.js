@@ -1,5 +1,5 @@
 import {getDefaultFinancedItem} from "../state/financed-item-data";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../action-creators/actions";
 import FinancedItemData from "../state/financed-item-data";
 
 const addFinancedItem = (state) => {
@@ -15,7 +15,7 @@ const addFinancedItem = (state) => {
     return updatedFinancedItems;
 };
 
-const updateFinancedItems = (state, action) => {
+const updateFinancedItem = (state, action) => {
     const updatedFinancedItems = state.slice();
     const itemIndex = action.payload.itemIndex;
     const updatedItem = action.payload.updatedFinancedItem;
@@ -25,9 +25,14 @@ const updateFinancedItems = (state, action) => {
     return updatedFinancedItems;
 };
 
+const updateFinancedItems = (state, action) => {
+    return action.payload;
+};
+
 const financedItemsReducer = (state = [getDefaultFinancedItem(), getDefaultFinancedItem()], action) => {
     const reducers = {
         [ADD_FINANCED_ITEM]: addFinancedItem,
+        [UPDATE_FINANCED_ITEM]: updateFinancedItem,
         [UPDATE_FINANCED_ITEMS]: updateFinancedItems
     };
 

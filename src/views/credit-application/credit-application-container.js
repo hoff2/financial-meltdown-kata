@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 class CreditApplicationContainer extends React.Component {
     componentDidMount() {
         this.props.fetchCustomerDetails();
+        this.props.fetchFinancedItems();
     };
 
     render() {
@@ -19,7 +20,8 @@ class CreditApplicationContainer extends React.Component {
 }
 
 CreditApplicationContainer.propTypes = {
-    fetchCustomerDetails: PropTypes.func
+    fetchCustomerDetails: PropTypes.func,
+    fetchFinancedItems: PropTypes.func
 };
 
 export default CreditApplicationContainer;

@@ -1,6 +1,6 @@
 import * as sinon from "sinon";
 import Chance from 'chance';
-import {UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
+import {UPDATE_FINANCED_ITEM} from "../../../src/action-creators/actions";
 import FinancedItemData from "../../../src/state/financed-item-data";
 import {updateFinancedItems} from "../../../src/action-creators/update-financed-items";
 
@@ -26,7 +26,7 @@ describe("UpdateFinancedItems", () => {
         const expectedItemIndex = chance.integer();
 
         const expectedEvent = {
-            type: UPDATE_FINANCED_ITEMS,
+            type: UPDATE_FINANCED_ITEM,
             payload: {
                 itemIndex: expectedItemIndex,
                 updatedFinancedItem: expectedFinancedItem

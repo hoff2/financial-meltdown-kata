@@ -56,12 +56,18 @@ describe("UpdateCustomerDetails", () => {
     });
 
     describe("fetchCustomerDetails", () => {
-        test("should call get customer details api and store result", () => {
+        test("should call get customer details api and store result", async () => {
             apiGetStub.returns(Promise.resolve(initialCustomerDetails));
 
-            fetchCustomerDetails()(dispatchSpy);
+            const expectedDispatch = {
+                type: UPDATE_CUSTOMER_DETAILS,
+                payload: initialCustomerDetails
+            };
+
+            await fetchCustomerDetails()(dispatchSpy);
 
             expect(apiGetStub.calledWith()).toEqual(true);
+            expect(dispatchSpy.calledWithExactly(expectedDispatch)).toEqual(true);
         });
     });
 });

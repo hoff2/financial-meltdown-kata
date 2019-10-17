@@ -21,12 +21,16 @@ const FinancedItems = (props) => {
         <div className='addItem'>
             <button onClick={props.addFinancedItem}>{'Add Item'}</button>
         </div>
+        <div className='persist-financed-items'>
+            <button onClick={() => props.persistFinancedItems(props.financedItems)}>{'Save'}</button>
+        </div>
     </div>
 )};
 
 FinancedItems.propTypes = {
     addFinancedItem: PropTypes.func,
     financedItems: PropTypes.arrayOf(PropTypes.instanceOf(FinancedItemData)),
+    persistFinancedItems: PropTypes.func,
     updateFinancedItems: PropTypes.func
 };
 

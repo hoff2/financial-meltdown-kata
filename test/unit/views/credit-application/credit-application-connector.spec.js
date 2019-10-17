@@ -52,5 +52,13 @@ describe("CreditApplicationConnector", () => {
         test("should provide an fetchCustomerDetails action creator", () => {
             expect(mapDispatchToProps.hasOwnProperty('fetchCustomerDetails')).toEqual(true);
         });
+
+        test("should provide a persistFinancedItems action creator", () => {
+            expect(mapDispatchToProps.hasOwnProperty('persistFinancedItems')).toEqual(true);
+        });
+
+        test("should provide a fetchFinancedItems action creator", () => {
+            expect(mapDispatchToProps.hasOwnProperty('fetchFinancedItems')).toEqual(true);
+        });
     });
 });

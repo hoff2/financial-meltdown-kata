@@ -1,8 +1,8 @@
 import React from 'react';
 import financedItemsReducer from "../../../src/reducers/financed-items-reducer";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
 import Chance from 'chance';
-import FinancedItemData from "../../../src/state/financed-item-data";
+import FinancedItemData, {getDefaultFinancedItem} from "../../../src/state/financed-item-data";
 
 const chance = new Chance();
 
@@ -31,7 +31,7 @@ describe("FinancedItemsReducer", () => {
         const expectedUpdatedState = [expectedUpdatedItem];
 
         const action = {
-            type: UPDATE_FINANCED_ITEMS,
+            type: UPDATE_FINANCED_ITEM,
             payload: {
                 itemIndex: 0,
                 updatedFinancedItem: expectedUpdatedItem
@@ -41,6 +41,18 @@ describe("FinancedItemsReducer", () => {
         const reducerResult = financedItemsReducer(initialState, action);
 
         expect(reducerResult).toEqual(expectedUpdatedState);
+    });
+
+    test("should update all financed items", () => {
+        const newItems = [getDefaultFinancedItem(), getDefaultFinancedItem()];
+        const action = {
+            type: UPDATE_FINANCED_ITEMS,
+            payload: newItems
+        };
+
+        const reducerResult = financedItemsReducer(initialState, action);
+
+        expect(reducerResult.length).toEqual(initialState.length + 1);
     });
 
     test("should add an empty financed item", () => {
