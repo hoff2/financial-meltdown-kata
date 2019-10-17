@@ -18,22 +18,24 @@ const CustomerDetails = (props) => {
     };
 
     return (
-        <div className='customer-details'>
-            <header>{'Customer Details'}</header>
+        <fieldset className='customer-details'>
+            <h2>{'Customer Details'}</h2>
 
             <div className='row'>
-                <div className='first-name column'>
-                    {'First Name'}
+                <div className='first-name'>
+                    <label htmlFor="firstName">{'First Name'}</label>
                     <input
+                        id="firstName"
                         type="text"
                         name="firstName"
                         value={props.customerDetails.firstName}
                         onChange={(event) => updateHandler(event)} />
                 </div>
 
-                <div className='last-name column'>
-                    {'Last Name'}
+                <div className='last-name'>
+                    <label htmlFor="lastName">{'Last Name'}</label>
                     <input
+                        id="lastName"
                         type="text"
                         name="lastName"
                         value={props.customerDetails.lastName}
@@ -42,27 +44,32 @@ const CustomerDetails = (props) => {
             </div>
 
             <div className='row'>
-                <div className='street-address column'>
-                    Street Address
+                <div className='street-address'>
+                    <label htmlFor="streetAddress">{'Street Address'}</label>
                     <input
+                        id="streetAddress"
                         type="text"
                         name="streetAddress"
                         value={props.customerDetails.streetAddress}
                         onChange={(event) => updateHandler(event)} />
                 </div>
+            </div>
 
-                <div className='city column'>
-                    City
+            <div className='row'>
+                <div className='city'>
+                    <label htmlFor="city">{'City'}</label>
                     <input
+                        id="city"
                         type="text"
                         name="city"
                         value={props.customerDetails.city}
                         onChange={(event) => updateHandler(event)} />
                 </div>
 
-                <div className='state column'>
-                    State
+                <div className='state'>
+                    <label htmlFor="state">{'State'}</label>
                     <input
+                        id="state"
                         type="text"
                         name="state"
                         value={props.customerDetails.state}
@@ -71,30 +78,32 @@ const CustomerDetails = (props) => {
             </div>
 
             <div className='row'>
-                <div className='phone column'>
-                    Phone
+                <div className='phone'>
+                    <label htmlFor="phone">{'Phone'}</label>
                     <input
+                        id="phone"
                         type="text"
                         name="phone"
                         value={props.customerDetails.phone}
                         onChange={(event) => updateHandler(event)} />
                 </div>
+            </div>
 
-                <div className='email column'>
-                    Email
+            <div className='row'>
+                <div className='email'>
+                    <label htmlFor="email">{'Email'}</label>
                     <input
+                        id="email"
                         type="text"
                         name="email"
                         value={props.customerDetails.email}
                         onChange={(event) => updateHandler(event)} />
                 </div>
-            </div>
-            <div className='row'>
                 <div className='update-customer-details'>
                     <button onClick={() => persistHandler()}>{'Update'}</button>
                 </div>
             </div>
-        </div>
+        </fieldset>
 )};
 
 CustomerDetails.propTypes = {

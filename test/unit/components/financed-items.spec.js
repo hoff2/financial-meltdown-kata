@@ -42,7 +42,7 @@ describe("FinancedItems", () => {
 
     describe("Financed Items", () => {
         test("should have a header", () => {
-           const header = financedItems.find('header');
+           const header = financedItems.find('h2');
 
            expect(header.length).toEqual(1);
         });

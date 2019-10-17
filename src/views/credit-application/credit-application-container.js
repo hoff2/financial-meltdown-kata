@@ -12,7 +12,7 @@ class CreditApplicationContainer extends React.Component {
     render() {
         return (
             <div>
-                <header>Credit Application</header>
+                <h1>Credit Application</h1>
                 <CustomerDetails {...this.props} />
                 <FinancedItems {...this.props} />
             </div>)

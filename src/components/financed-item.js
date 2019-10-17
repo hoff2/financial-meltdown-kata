@@ -25,40 +25,52 @@ const FinancedItem = (props) => {
 
     const price = props.financedItem.price;
 
+
+    const itemNameId = "itemName-" + props.itemIndex;
+    const priceId = "price-" + props.itemIndex;
+
     return (
-        <div className='financedItem row'>
-            <div className='itemName column'>
-                Item Name
-                <input
-                    type="text"
-                    name="itemName"
-                    value={props.financedItem.itemName}
-                    onChange={(event) => updateHandler(event)} />
-            </div>
+        <fieldset className='financedItem column'>
+            <div className='row'>
+                <div className='itemName'>
+                    <label htmlFor={itemNameId}>{'Item Name'}</label>
+                    <input
+                        id={itemNameId}
+                        type="text"
+                        name="itemName"
+                        value={props.financedItem.itemName}
+                        onChange={(event) => updateHandler(event)} />
+                </div>
 
-            <div className='price column'>
-                Price
-                <input
-                    type="text"
-                    name="price"
-                    value={!price ? '' : price}
-                    onChange={(event) => updateHandler(event)} />
-            </div>
-
-            <div className='minimum-payment column'>
-                Minimum Payment
-                <div className='value'>
-                    {props.financedItem.minimumPayment}
+                <div className='price'>
+                    <label htmlFor={priceId}>{'Price'}</label>
+                    <input
+                        id={priceId}
+                        type="text"
+                        name="price"
+                        value={!price ? '' : price}
+                        onChange={(event) => updateHandler(event)} />
                 </div>
             </div>
 
-            <div className='rate column'>
-                Rate
-                <div className='value'>
-                    {props.financedItem.rate}
+            <div className='row'>
+                <div className='minimum-payment'>
+                    <span>{'Minimum Payment'}</span>
+                    <span className='value'>
+                        {props.financedItem.minimumPayment}
+                    </span>
                 </div>
             </div>
-        </div>
+
+            <div className='row'>
+                <div className='rate'>
+                    <span>{'Rate'}</span>
+                    <span className='value'>
+                        {props.financedItem.rate}
+                    </span>
+                </div>
+            </div>
+        </fieldset>
     )
 };
 

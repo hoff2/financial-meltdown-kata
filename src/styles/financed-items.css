@@ -1,15 +1,18 @@
-.financedItem {
+.financed-items {
+    display: flex;
+    flex-direction: column;
     margin: 15px;
 }
 
-.row {
+.financed-items .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    margin: 0.5rem;
 }
 
-.column {
+.financed-items .column {
     display: flex;
     flex: 1;
     flex-direction: column;

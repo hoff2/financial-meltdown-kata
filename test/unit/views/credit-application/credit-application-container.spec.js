@@ -26,7 +26,7 @@ describe("CreditApplicationContainer", () => {
     });
 
     test("should contain header", () => {
-        const header = container.find('header');
+        const header = container.find('h1');
 
         expect(header.length).toEqual(1);
     });

@@ -7,9 +7,9 @@ import '../styles/financed-items.css';
 const FinancedItems = (props) => {
 
     return (
-    <div className='financed-items'>
-        <header>{'Financed Items'}</header>
-        <div>
+    <fieldset className='financed-items'>
+        <h2>{'Financed Items'}</h2>
+        <div className='column'>
             {props.financedItems.map((value, index) => {
                 return <FinancedItem
                     financedItem={value}
@@ -18,13 +18,15 @@ const FinancedItems = (props) => {
                     updateFinancedItems={props.updateFinancedItems}/>
             })}
         </div>
-        <div className='addItem'>
-            <button onClick={props.addFinancedItem}>{'Add Item'}</button>
+        <div className='row'>
+            <div className='addItem'>
+                <button onClick={props.addFinancedItem}>{'Add Item'}</button>
+            </div>
+            <div className='persist-financed-items'>
+                <button onClick={() => props.persistFinancedItems(props.financedItems)}>{'Save'}</button>
+            </div>
         </div>
-        <div className='persist-financed-items'>
-            <button onClick={() => props.persistFinancedItems(props.financedItems)}>{'Save'}</button>
-        </div>
-    </div>
+    </fieldset>
 )};
 
 FinancedItems.propTypes = {
