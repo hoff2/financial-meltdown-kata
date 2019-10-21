@@ -6,8 +6,7 @@ import {
     updateCustomerDetails
 } from "../../action-creators/update-customer-details";
 import {updateFinancedItems} from "../../action-creators/update-financed-items";
-import {addFinancedItem} from "../../action-creators/add-financed-item";
-import {fetchFinancedItems, persistFinancedItems} from "../../action-creators/financed-items";
+import {addFinancedItem, fetchFinancedItems, persistFinancedItems} from "../../action-creators/financed-items";
 
 export const mapStateToProps = state => {
     return {

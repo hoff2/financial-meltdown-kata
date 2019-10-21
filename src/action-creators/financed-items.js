@@ -1,5 +1,14 @@
 import {getFinancedItemsAPI, postFinancedItemAPI} from "../api/financed-items-api";
-import {UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "./actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "./actions";
+
+export const addFinancedItem = () => {
+    return dispatch => {
+        dispatch({
+            type: ADD_FINANCED_ITEM
+        });
+        return null;
+    }
+};
 
 export const persistFinancedItems = (financedItems) => {
     return dispatch => {
