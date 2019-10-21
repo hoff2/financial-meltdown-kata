@@ -2,6 +2,8 @@ import React from 'react';
 import CustomerDetails from "../../components/customer-details";
 import FinancedItems from "../../components/financed-items";
 import PropTypes from 'prop-types';
+import {ToastContainer} from "react-toastify";
+import '../../styles/toast.css';
 
 class CreditApplicationContainer extends React.Component {
     componentDidMount() {
@@ -12,6 +14,7 @@ class CreditApplicationContainer extends React.Component {
     render() {
         return (
             <div>
+                <ToastContainer />
                 <h1>Credit Application</h1>
                 <CustomerDetails {...this.props} />
                 <FinancedItems {...this.props} />

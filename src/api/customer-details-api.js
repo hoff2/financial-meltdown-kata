@@ -5,7 +5,14 @@ export const getCustomerDetailsAPI = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json());
+    })
+        .then(res => res.json())
+        .catch(() => {
+            return {
+                error: true,
+                message: "Customer details are unavailable"
+            };
+        });
 };
 
 export const updateCustomerDetailsAPI = (customerDetails) => {

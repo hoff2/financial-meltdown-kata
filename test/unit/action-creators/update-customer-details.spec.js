@@ -8,6 +8,7 @@ import Chance from 'chance';
 import {UPDATE_CUSTOMER_DETAILS} from "../../../src/action-creators/actions";
 import CustomerDetailsData from "../../../src/state/customer-details-data";
 import * as CustomerDetailsAPI from "../../../src/api/customer-details-api";
+import * as toast from "react-toastify";
 
 const chance = new Chance();
 
@@ -22,9 +23,23 @@ const initialCustomerDetails = CustomerDetailsData({
 });
 
 describe("UpdateCustomerDetails", () => {
-    const dispatchSpy = sinon.spy();
-    const apiPostStub = sinon.stub(CustomerDetailsAPI, 'updateCustomerDetailsAPI');
-    const apiGetStub = sinon.stub(CustomerDetailsAPI, 'getCustomerDetailsAPI');
+    let dispatchSpy,
+        apiPostStub,
+        apiGetStub,
+        toastStub;
+
+    beforeEach(() => {
+        dispatchSpy = sinon.spy();
+        apiPostStub = sinon.stub(CustomerDetailsAPI, 'updateCustomerDetailsAPI');
+        apiGetStub = sinon.stub(CustomerDetailsAPI, 'getCustomerDetailsAPI');
+        toastStub = sinon.stub(toast, 'toast');
+    });
+
+    afterEach(() => {
+        apiPostStub.restore();
+        apiGetStub.restore();
+        toastStub.restore();
+    });
 
     describe("updateCustomerDetails", () => {
         test("should update customer details property with value", () => {
@@ -68,6 +83,20 @@ describe("UpdateCustomerDetails", () => {
 
             expect(apiGetStub.calledWith()).toEqual(true);
             expect(dispatchSpy.calledWithExactly(expectedDispatch)).toEqual(true);
+        });
+
+        test("should display toast message when api call fails", async () => {
+            const error = {
+                error: true,
+                message: chance.string()
+            };
+
+            apiGetStub.returns(Promise.resolve(error));
+
+            await fetchCustomerDetails()(dispatchSpy);
+
+            expect(dispatchSpy.callCount).toEqual(0);
+            expect(toastStub.calledWithExactly(error.message)).toBe(true);
         });
     });
 });

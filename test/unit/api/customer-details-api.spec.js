@@ -32,4 +32,16 @@ describe('customer details api', () => {
         expect(fetch.mock.calls.length).toEqual(1);
         expect(fetch.mock.calls[0][0]).toEqual('http://localhost:8080/customerDetails');
     });
+
+    test('should return error when request is rejects', (done) => {
+        fetch.mockReject();
+
+        getCustomerDetailsAPI().then(res => {
+            expect(res.error).toEqual(true);
+            expect(res.message).toEqual("Customer details are unavailable");
+            done();
+        }).catch((error) => {
+            done.fail(error);
+        });
+    });
 });

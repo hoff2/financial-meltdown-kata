@@ -1,6 +1,7 @@
 import {UPDATE_CUSTOMER_DETAILS} from "./actions";
 import CustomerDetailsData from "../state/customer-details-data";
 import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "../api/customer-details-api";
+import {toast} from "react-toastify";
 
 export const updateCustomerDetails = (customerDetails, name, value) => {
     const updatedCustomerDetails = CustomerDetailsData.update(customerDetails, {
@@ -34,11 +35,16 @@ export const fetchCustomerDetails = () => {
     return dispatch => {
         getCustomerDetailsAPI()
             .then((response) => {
-                const customerDetails = CustomerDetailsData(response);
-                dispatch({
-                    type: UPDATE_CUSTOMER_DETAILS,
-                    payload: customerDetails
-                });
+
+                if (response && !response.error) {
+                    const customerDetails = CustomerDetailsData(response);
+                    dispatch({
+                        type: UPDATE_CUSTOMER_DETAILS,
+                        payload: customerDetails
+                    });
+                } else {
+                    toast(response.message);
+                }
             });
         return null;
     };
