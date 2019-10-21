@@ -102,12 +102,12 @@ describe("Financed Item", () => {
 
             test("should call update customer details when price is changed", () => {
                 const fieldName = "price";
-                const updatedPrice = chance.string();
+                const updatedPrice = chance.floating();
                 const itemIndex = 0;
 
                 priceInput.simulate('change', {target: {name: fieldName, value: updatedPrice}});
 
-                expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, parseFloat(updatedPrice))).toBe(true);
+                expect(updateFinancedItemsAC.calledWithExactly(itemIndex, properties.financedItem, fieldName, updatedPrice)).toBe(true);
             });
 
             test("should set price to zero if field is undefined", () => {

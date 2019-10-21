@@ -6,20 +6,18 @@ import '../styles/financed-items.css';
 const FinancedItem = (props) => {
 
     const updateHandler = (event) => {
-        if (event.target.name === 'itemName') {
+        if (event.target.name === 'price') {
+            props.updateFinancedItems(
+                props.itemIndex,
+                props.financedItem,
+                event.target.name,
+                parseFloat(event.target.value ? event.target.value : 0.0))
+        } else {
             props.updateFinancedItems(
                 props.itemIndex,
                 props.financedItem,
                 event.target.name,
                 event.target.value)
-        } else {
-            const newValue = event.target.value ? parseFloat(event.target.value) : 0.0;
-
-            props.updateFinancedItems(
-                props.itemIndex,
-                props.financedItem,
-                event.target.name,
-                newValue)
         }
     };
 
@@ -46,7 +44,8 @@ const FinancedItem = (props) => {
                     <label htmlFor={priceId}>{'Price'}</label>
                     <input
                         id={priceId}
-                        type="text"
+                        type="number"
+                        step="0.01"
                         name="price"
                         value={!price ? '' : price}
                         onChange={(event) => updateHandler(event)} />
