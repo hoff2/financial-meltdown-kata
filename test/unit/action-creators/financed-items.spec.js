@@ -1,8 +1,24 @@
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
 import * as sinon from "sinon";
 import * as FinancedItemsAPI from "../../../src/api/financed-items-api";
-import {addFinancedItem, fetchFinancedItems, persistFinancedItems} from "../../../src/action-creators/financed-items";
+import {
+    addFinancedItem,
+    fetchFinancedItems,
+    persistFinancedItems,
+    updateFinancedItems
+} from "../../../src/action-creators/financed-items";
 import {getDefaultFinancedItem} from "../../../src/state/financed-item-data";
+import Chance from "chance";
+import FinancedItemData from "../../../src/state/financed-item-data";
+
+const chance = new Chance();
+
+const initialFinancedItem = FinancedItemData({
+    itemName: chance.string(),
+    price: chance.floating(),
+    minimumPayment: chance.floating(),
+    rate: chance.floating()
+});
 
 describe("Financed Items Action Creator", () => {
     let dispatchSpy,
@@ -20,14 +36,39 @@ describe("Financed Items Action Creator", () => {
         apiGetStub.restore();
     });
 
-    test("should add financed empty financed item", () => {
+    describe("addFinancedItem", () => {
+        test("should add financed empty financed item", () => {
 
-        const expectedEvent = {
-            type: ADD_FINANCED_ITEM
-        };
+            const expectedEvent = {
+                type: ADD_FINANCED_ITEM
+            };
 
-        addFinancedItem()(dispatchSpy);
-        expect(dispatchSpy.calledWithExactly(expectedEvent)).toEqual(true);
+            addFinancedItem()(dispatchSpy);
+            expect(dispatchSpy.calledWithExactly(expectedEvent)).toEqual(true);
+        });
+    });
+
+    describe("updateFinancedItems", () => {
+        test("should update financed item property with value", () => {
+            const expectedFinancedItem = FinancedItemData.update(initialFinancedItem, {
+                itemName: {
+                    $set: chance.string()
+                }
+            });
+
+            const expectedItemIndex = chance.integer();
+
+            const expectedEvent = {
+                type: UPDATE_FINANCED_ITEM,
+                payload: {
+                    itemIndex: expectedItemIndex,
+                    updatedFinancedItem: expectedFinancedItem
+                }
+            };
+
+            updateFinancedItems(expectedItemIndex, initialFinancedItem, "itemName", expectedFinancedItem.itemName)(dispatchSpy);
+            expect(dispatchSpy.calledWithExactly(expectedEvent)).toEqual(true);
+        });
     });
 
     describe("persistFinancedItems", () => {
