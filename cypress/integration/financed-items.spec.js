@@ -12,6 +12,8 @@ context('Financed Items', () => {
         const itemNameExisting = chance.string();
         const itemNameNew = chance.string();
 
+        cy.get('.addItem>button').click();
+
         cy.get('.itemName>input')
             .first()
             .type('{selectall}{del}')
