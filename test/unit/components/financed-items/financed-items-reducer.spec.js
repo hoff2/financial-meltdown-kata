@@ -1,6 +1,6 @@
 import React from 'react';
 import financedItemsReducer from "../../../../src/components/financed-items/financed-items-reducer";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../../src/action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../../src/store/actions";
 import Chance from 'chance';
 import FinancedItemState, {getDefaultFinancedItem} from "../../../../src/components/financed-items/financed-item-state";
 

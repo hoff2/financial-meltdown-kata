@@ -1,5 +1,5 @@
 import {getFinancedItemsAPI, postFinancedItemAPI} from "./financed-items-api";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../store/actions";
 import FinancedItemState from "./financed-item-state";
 
 export const addFinancedItem = () => {

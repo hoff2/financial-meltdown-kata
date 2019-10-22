@@ -1,4 +1,4 @@
-import {UPDATE_CUSTOMER_DETAILS} from "../../action-creators/actions";
+import {UPDATE_CUSTOMER_DETAILS} from "../../store/actions";
 import CustomerDetailsData from "./customer-details-state";
 import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "./customer-details-api";
 import {toast} from "react-toastify";

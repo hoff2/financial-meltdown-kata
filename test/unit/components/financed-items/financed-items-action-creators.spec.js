@@ -1,4 +1,4 @@
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../../src/action-creators/actions";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../../src/store/actions";
 import * as sinon from "sinon";
 import * as FinancedItemsAPI from "../../../../src/components/financed-items/financed-items-api";
 import {

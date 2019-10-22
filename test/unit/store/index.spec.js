@@ -1,4 +1,4 @@
-import {reducers} from "../../../src/reducers";
+import {reducers} from "../../../src/store/reducers";
 
 describe("combineReducers", () => {
     test("should have a reducer for updating customer details", () => {

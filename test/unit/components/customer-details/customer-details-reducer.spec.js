@@ -1,7 +1,7 @@
 import CustomerDetailsData from "../../../../src/components/customer-details/customer-details-state";
 import customerDetailsReducer from "../../../../src/components/customer-details/customer-details-reducer";
 import Chance from 'chance';
-import {UPDATE_CUSTOMER_DETAILS, UPDATE_LAST_NAME} from "../../../../src/action-creators/actions";
+import {UPDATE_CUSTOMER_DETAILS, UPDATE_LAST_NAME} from "../../../../src/store/actions";
 
 const chance = new Chance();
 
