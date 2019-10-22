@@ -1,4 +1,4 @@
-import {getFinancedItemsAPI, postFinancedItemAPI} from "../../../src/api/financed-items-api";
+import {getFinancedItemsAPI, postFinancedItemAPI} from "../../../../src/components/financed-items/financed-items-api";
 
 describe('financed items api', () => {
     beforeEach(() => {

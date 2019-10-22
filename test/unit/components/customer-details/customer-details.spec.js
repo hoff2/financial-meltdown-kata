@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import CustomerDetails from "../../../src/components/customer-details";
+import CustomerDetails from "../../../../src/components/customer-details/customer-details";
 import Chance from 'chance';
-import CustomerDetailsData from "../../../src/state/customer-details-data";
+import CustomerDetailsData from "../../../../src/components/customer-details/customer-details-state";
 import * as sinon from "sinon";
 
 const chance = new Chance();

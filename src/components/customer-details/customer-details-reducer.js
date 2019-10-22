@@ -1,5 +1,5 @@
-import {getDefaultCustomerDetails} from "../state/customer-details-data";
-import {UPDATE_CUSTOMER_DETAILS} from "../action-creators/actions";
+import {getDefaultCustomerDetails} from "./customer-details-state";
+import {UPDATE_CUSTOMER_DETAILS} from "../../store/actions";
 
 const updateCustomerDetails = (state, action) => {
     return action.payload;

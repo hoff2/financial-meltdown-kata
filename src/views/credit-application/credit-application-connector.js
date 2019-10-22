@@ -4,10 +4,13 @@ import {
     fetchCustomerDetails,
     persistCustomerDetails,
     updateCustomerDetails
-} from "../../action-creators/update-customer-details";
-import {updateFinancedItems} from "../../action-creators/update-financed-items";
-import {addFinancedItem} from "../../action-creators/add-financed-item";
-import {fetchFinancedItems, persistFinancedItems} from "../../action-creators/financed-items";
+} from "../../components/customer-details/customer-details-action-creators";
+import {
+    addFinancedItem,
+    fetchFinancedItems,
+    persistFinancedItems,
+    updateFinancedItems
+} from "../../components/financed-items/financed-items-action-creators";
 
 export const mapStateToProps = state => {
     return {

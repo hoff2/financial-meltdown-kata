@@ -3,8 +3,8 @@ import {shallow} from 'enzyme';
 import CreditApplicationContainer from "../../../../src/views/credit-application/credit-application-container";
 
 import Chance from 'chance';
-import CustomerDetails from "../../../../src/components/customer-details";
-import FinancedItems from "../../../../src/components/financed-items";
+import CustomerDetails from "../../../../src/components/customer-details/customer-details";
+import FinancedItems from "../../../../src/components/financed-items/financed-items";
 import * as sinon from "sinon";
 
 const chance = new Chance();

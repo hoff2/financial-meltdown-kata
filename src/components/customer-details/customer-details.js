@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CustomerDetailsData from "../state/customer-details-data";
-import '../styles/customer-details.css';
+import CustomerDetailsData from "./customer-details-state";
+import './customer-details.css';
 
 const CustomerDetails = (props) => {
 

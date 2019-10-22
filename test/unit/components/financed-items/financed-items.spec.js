@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import FinancedItems from "../../../src/components/financed-items";
-import FinancedItemData from "../../../src/state/financed-item-data";
+import FinancedItems from "../../../../src/components/financed-items/financed-items";
+import FinancedItemState from "../../../../src/components/financed-items/financed-item-state";
 import Chance from 'chance';
-import FinancedItem from "../../../src/components/financed-item";
+import FinancedItem from "../../../../src/components/financed-items/financed-item";
 import * as sinon from "sinon";
 
 const chance = new Chance();
@@ -15,14 +15,14 @@ describe("FinancedItems", () => {
     const addFinancedItemAC = sinon.spy();
     const persistFinancedItemsAC = sinon.spy();
 
-    const financedItem1 = FinancedItemData({
+    const financedItem1 = FinancedItemState({
         itemName: chance.string(),
         price: chance.floating(),
         minimumPayment: chance.floating(),
         rate: chance.floating()
     });
 
-    const financedItem2 = FinancedItemData({
+    const financedItem2 = FinancedItemState({
         itemName: chance.string(),
         price: chance.floating(),
         minimumPayment: chance.floating(),

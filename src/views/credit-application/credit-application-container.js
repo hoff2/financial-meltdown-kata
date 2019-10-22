@@ -1,6 +1,6 @@
 import React from 'react';
-import CustomerDetails from "../../components/customer-details";
-import FinancedItems from "../../components/financed-items";
+import CustomerDetails from "../../components/customer-details/customer-details";
+import FinancedItems from "../../components/financed-items/financed-items";
 import PropTypes from 'prop-types';
 import {ToastContainer} from "react-toastify";
 import '../../styles/toast.css';

@@ -1,12 +1,12 @@
 import React from 'react';
-import financedItemsReducer from "../../../src/reducers/financed-items-reducer";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../src/action-creators/actions";
+import financedItemsReducer from "../../../../src/components/financed-items/financed-items-reducer";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../../../src/store/actions";
 import Chance from 'chance';
-import FinancedItemData, {getDefaultFinancedItem} from "../../../src/state/financed-item-data";
+import FinancedItemState, {getDefaultFinancedItem} from "../../../../src/components/financed-items/financed-item-state";
 
 const chance = new Chance();
 
-const financedItem = FinancedItemData({
+const financedItem = FinancedItemState({
     itemName: chance.string(),
     price: chance.floating()
 });
@@ -22,7 +22,7 @@ describe("FinancedItemsReducer", () => {
 
     test("should update a specified property with a specified value", () => {
         const updatedItemName = chance.string();
-        const expectedUpdatedItem = FinancedItemData.update(financedItem, {
+        const expectedUpdatedItem = FinancedItemState.update(financedItem, {
             itemName: {
                 $set: updatedItemName
             }
