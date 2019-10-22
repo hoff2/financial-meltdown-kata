@@ -3,51 +3,46 @@ import Chance from 'chance';
 
 const chance = new Chance();
 
+const verifyInputField = (selector) => {
+    const expectedInputValue = chance.string();
+
+    cy.get(selector)
+        .type('{selectall}{del}')
+        .type(expectedInputValue)
+        .should('have.value', expectedInputValue);
+};
+
 context('Customer Details', () => {
     beforeEach(() => {
         cy.visit('/')
     });
 
     it('should update the first name', () => {
-        // https://on.cypress.io/type
-        cy.get('.first-name>input')
-            .type('{selectall}{del}')
-            .type('newCustomerFirstName').should('have.value', 'newCustomerFirstName')
-
-        // .type() with special character sequences
-            .type('{leftarrow}{rightarrow}{uparrow}{downarrow}')
-            .type('{del}{selectall}{backspace}')
-
-            // .type() with key modifiers
-            .type('{alt}{option}') //these are equivalent
-            .type('{ctrl}{control}') //these are equivalent
-            .type('{meta}{command}{cmd}') //these are equivalent
-            .type('{shift}')
-
-            // Delay each keypress by 0.1 sec
-            .type('slowCustomerFirstName', { delay: 100 })
-            .should('have.value', 'slowCustomerFirstName')
+        verifyInputField('.first-name>input');
     });
 
     it('should update the last name', () => {
-        // https://on.cypress.io/type
-        cy.get('.last-name>input')
-            .type('{selectall}{del}')
-            .type('newCustomerLastName').should('have.value', 'newCustomerLastName')
+        verifyInputField('.last-name>input');
+    });
 
-        // .type() with special character sequences
-            .type('{leftarrow}{rightarrow}{uparrow}{downarrow}')
-            .type('{del}{selectall}{backspace}')
+    it('should update the street address', () => {
+        verifyInputField('.street-address>input');
+    });
 
-            // .type() with key modifiers
-            .type('{alt}{option}') //these are equivalent
-            .type('{ctrl}{control}') //these are equivalent
-            .type('{meta}{command}{cmd}') //these are equivalent
-            .type('{shift}')
+    it('should update the city', () => {
+        verifyInputField('.city>input');
+    });
 
-            // Delay each keypress by 0.1 sec
-            .type('slowCustomerLastName', { delay: 100 })
-            .should('have.value', 'slowCustomerLastName')
+    it('should update the state', () => {
+        verifyInputField('.state>input');
+    });
+
+    it('should update the phone', () => {
+        verifyInputField('.phone>input');
+    });
+
+    it('should update the email', () => {
+        verifyInputField('.email>input');
     });
 
     it('should retrieve last updated customer details when page refreshed', () => {

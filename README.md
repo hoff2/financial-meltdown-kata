@@ -30,6 +30,8 @@ Java and Spring Boot.
 ```npm run test```
 
 #### Acceptance Test the Frontend App
+Run the backend and frontend before running this command:
+
 ```./node_modules/.bin/cypress open```
 
 #### Start the Backend App
