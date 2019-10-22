@@ -1,6 +1,6 @@
 package com.industryx0.financialmeltdownkata.controller;
 
-import com.industryx0.financialmeltdownkata.domain.CustomerDetailsView;
+import com.industryx0.financialmeltdownkata.domain.CustomerDetails;
 import com.industryx0.financialmeltdownkata.service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,12 @@ public class CustomerDetailsController {
     CustomerDetailsService customerDetailsService;
 
     @GetMapping(produces = APPLICATION_JSON_UTF8_VALUE)
-    public CustomerDetailsView getCustomerDetails() {
+    public CustomerDetails getCustomerDetails() {
         return customerDetailsService.getCustomerDetails();
     }
 
     @PostMapping(produces = APPLICATION_JSON_UTF8_VALUE)
-    public CustomerDetailsView updateCustomerDetails(@RequestBody CustomerDetailsView customerDetails) {
+    public CustomerDetails updateCustomerDetails(@RequestBody CustomerDetails customerDetails) {
         return customerDetailsService.setCustomerDetails(customerDetails);
     }
 }

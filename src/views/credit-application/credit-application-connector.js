@@ -10,7 +10,7 @@ import {
     fetchFinancedItems,
     persistFinancedItems,
     updateFinancedItems
-} from "../../action-creators/financed-items";
+} from "../../components/financed-items/financed-items-action-creators";
 
 export const mapStateToProps = state => {
     return {

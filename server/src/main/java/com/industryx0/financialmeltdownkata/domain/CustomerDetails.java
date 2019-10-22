@@ -1,6 +1,6 @@
 package com.industryx0.financialmeltdownkata.domain;
 
-public class CustomerDetailsView {
+public class CustomerDetails {
     private String firstName;
     private String lastName;
     private String streetAddress;

@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Chance from 'chance';
 import * as sinon from "sinon";
-import FinancedItemData from "../../../src/state/financed-item-data";
-import FinancedItem from "../../../src/components/financed-item";
+import FinancedItemState from "../../../../src/components/financed-items/financed-item-state";
+import FinancedItem from "../../../../src/components/financed-items/financed-item";
 
 const chance = new Chance();
 
@@ -12,7 +12,7 @@ describe("Financed Item", () => {
 
     const updateFinancedItemsAC = sinon.spy();
 
-    const financedItemData = FinancedItemData({
+    const financedItemData = FinancedItemState({
         itemName: chance.string(),
         price: chance.floating(),
         minimumPayment: chance.floating(),
@@ -80,7 +80,7 @@ describe("Financed Item", () => {
             });
 
             test("should set price to empty if props is empty", () => {
-                const financedItemData = FinancedItemData({
+                const financedItemData = FinancedItemState({
                     itemName: chance.string(),
                     price: 0,
                     minimumPayment: chance.floating(),

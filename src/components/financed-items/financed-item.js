@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import FinancedItemData from "../state/financed-item-data";
-import '../styles/financed-items.css';
+import FinancedItemState from "./financed-item-state";
+import './financed-items.css';
 
 const FinancedItem = (props) => {
 
@@ -74,7 +74,7 @@ const FinancedItem = (props) => {
 };
 
 FinancedItem.propTypes = {
-    financedItem: PropTypes.instanceOf(FinancedItemData),
+    financedItem: PropTypes.instanceOf(FinancedItemState),
     itemIndex: PropTypes.number,
     updateFinancedItems: PropTypes.func
 };

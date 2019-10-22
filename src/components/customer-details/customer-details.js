@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CustomerDetailsData from "./customer-details-state";
 import './customer-details.css';
 
-const CustomerDetailsView = (props) => {
+const CustomerDetails = (props) => {
 
     const persistHandler = () => {
         props.persistCustomerDetails(props.customerDetails);
@@ -106,10 +106,10 @@ const CustomerDetailsView = (props) => {
         </fieldset>
 )};
 
-CustomerDetailsView.propTypes = {
+CustomerDetails.propTypes = {
     customerDetails: PropTypes.instanceOf(CustomerDetailsData),
     persistCustomerDetails: PropTypes.func,
     updateCustomerDetails: PropTypes.func
 };
 
-export default CustomerDetailsView;
+export default CustomerDetails;

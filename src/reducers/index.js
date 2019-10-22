@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import customerDetailsReducer from "../components/customer-details/customer-details-reducer";
-import financedItemsReducer from "./financed-items-reducer";
+import financedItemsReducer from "../components/financed-items/financed-items-reducer";
 
 export const reducers = {
     customerDetails: customerDetailsReducer,

@@ -3,8 +3,8 @@ import {shallow} from 'enzyme';
 import CreditApplicationContainer from "../../../../src/views/credit-application/credit-application-container";
 
 import Chance from 'chance';
-import CustomerDetailsView from "../../../../src/components/customer-details/customer-details-view";
-import FinancedItems from "../../../../src/components/financed-items";
+import CustomerDetails from "../../../../src/components/customer-details/customer-details";
+import FinancedItems from "../../../../src/components/financed-items/financed-items";
 import * as sinon from "sinon";
 
 const chance = new Chance();
@@ -32,7 +32,7 @@ describe("CreditApplicationContainer", () => {
     });
 
     test("should have a customer details component", () => {
-        const customerDetails = container.find(CustomerDetailsView);
+        const customerDetails = container.find(CustomerDetails);
 
         expect(customerDetails.length).toEqual(1);
     });

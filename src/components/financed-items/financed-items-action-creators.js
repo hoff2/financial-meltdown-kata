@@ -1,6 +1,6 @@
-import {getFinancedItemsAPI, postFinancedItemAPI} from "../api/financed-items-api";
-import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "./actions";
-import FinancedItemData from "../state/financed-item-data";
+import {getFinancedItemsAPI, postFinancedItemAPI} from "./financed-items-api";
+import {ADD_FINANCED_ITEM, UPDATE_FINANCED_ITEM, UPDATE_FINANCED_ITEMS} from "../../action-creators/actions";
+import FinancedItemState from "./financed-item-state";
 
 export const addFinancedItem = () => {
     return dispatch => {
@@ -12,7 +12,7 @@ export const addFinancedItem = () => {
 };
 
 export const updateFinancedItems = (itemIndex, financedItem, name, value) => {
-    const updatedFinancedItem = FinancedItemData.update(financedItem, {
+    const updatedFinancedItem = FinancedItemState.update(financedItem, {
         [name]: {
             $set: value
         }

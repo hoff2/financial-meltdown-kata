@@ -1,17 +1,17 @@
 package com.industryx0.financialmeltdownkata.service;
 
-import com.industryx0.financialmeltdownkata.domain.CustomerDetailsView;
+import com.industryx0.financialmeltdownkata.domain.CustomerDetails;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerDetailsService {
-    private CustomerDetailsView customerDetails;
+    private CustomerDetails customerDetails;
 
-    public CustomerDetailsView getCustomerDetails() {
+    public CustomerDetails getCustomerDetails() {
         return this.customerDetails;
     }
 
-    public CustomerDetailsView setCustomerDetails(CustomerDetailsView customerDetails) {
+    public CustomerDetails setCustomerDetails(CustomerDetails customerDetails) {
         this.customerDetails = customerDetails;
         return this.customerDetails;
     }
