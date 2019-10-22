@@ -3,6 +3,14 @@ import Chance from 'chance';
 
 const chance = new Chance();
 
+const updateField = (selector, updateValue) => {
+    cy.get(selector)
+        .first()
+        .type('{selectall}{del}')
+        .type(updateValue)
+        .should('have.value', updateValue);
+};
+
 context('Financed Items', () => {
     beforeEach(() => {
         cy.visit('/')
@@ -14,19 +22,11 @@ context('Financed Items', () => {
 
         cy.get('.addItem>button').click();
 
-        cy.get('.itemName>input')
-            .first()
-            .type('{selectall}{del}')
-            .type(itemNameExisting)
-            .should('have.value', itemNameExisting);
+        updateField('.itemName>input', itemNameExisting);
 
         cy.get('.addItem>button').click();
 
-        cy.get('.itemName>input')
-            .last()
-            .type('{selectall}{del}')
-            .type(itemNameNew)
-            .should('have.value', itemNameNew);
+        updateField('.itemName>input', itemNameNew);
 
         cy.get('.persist-financed-items>button').click();
 
