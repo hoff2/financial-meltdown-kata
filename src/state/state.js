@@ -1,5 +1,5 @@
 import t from 'tcomb';
-import CustomerDetailsData, {getDefaultCustomerDetails} from "./customer-details-data";
+import CustomerDetailsData, {getDefaultCustomerDetails} from "../components/customer-details/customer-details-state";
 import FinancedItemData, {getDefaultFinancedItem} from "./financed-item-data";
 
 const InitialState = t.struct({

@@ -1,6 +1,6 @@
-import {UPDATE_CUSTOMER_DETAILS} from "./actions";
-import CustomerDetailsData from "../state/customer-details-data";
-import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "../api/customer-details-api";
+import {UPDATE_CUSTOMER_DETAILS} from "../../action-creators/actions";
+import CustomerDetailsData from "./customer-details-state";
+import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "./customer-details-api";
 import {toast} from "react-toastify";
 
 export const updateCustomerDetails = (customerDetails, name, value) => {

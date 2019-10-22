@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import CreditApplicationContainer from "../../../../src/views/credit-application/credit-application-container";
 
 import Chance from 'chance';
-import CustomerDetails from "../../../../src/components/customer-details";
+import CustomerDetailsView from "../../../../src/components/customer-details/customer-details-view";
 import FinancedItems from "../../../../src/components/financed-items";
 import * as sinon from "sinon";
 
@@ -32,7 +32,7 @@ describe("CreditApplicationContainer", () => {
     });
 
     test("should have a customer details component", () => {
-        const customerDetails = container.find(CustomerDetails);
+        const customerDetails = container.find(CustomerDetailsView);
 
         expect(customerDetails.length).toEqual(1);
     });

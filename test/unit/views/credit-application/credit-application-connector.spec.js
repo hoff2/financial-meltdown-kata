@@ -7,7 +7,7 @@ import CreditApplicationConnector, {
 import {Provider} from "react-redux";
 import prepareStore from "../../../../src/store/store";
 import Chance from 'chance';
-import {getDefaultCustomerDetails} from "../../../../src/state/customer-details-data";
+import {getDefaultCustomerDetails} from "../../../../src/components/customer-details/customer-details-state";
 
 const chance = new Chance();
 

@@ -3,11 +3,11 @@ import {
     fetchCustomerDetails,
     persistCustomerDetails,
     updateCustomerDetails
-} from "../../../src/action-creators/customer-details";
+} from "../../../../src/components/customer-details/customer-details-action-creators";
 import Chance from 'chance';
-import {UPDATE_CUSTOMER_DETAILS} from "../../../src/action-creators/actions";
-import CustomerDetailsData from "../../../src/state/customer-details-data";
-import * as CustomerDetailsAPI from "../../../src/api/customer-details-api";
+import {UPDATE_CUSTOMER_DETAILS} from "../../../../src/action-creators/actions";
+import CustomerDetailsData from "../../../../src/components/customer-details/customer-details-state";
+import * as CustomerDetailsAPI from "../../../../src/components/customer-details/customer-details-api";
 import * as toast from "react-toastify";
 
 const chance = new Chance();

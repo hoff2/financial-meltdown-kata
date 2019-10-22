@@ -4,7 +4,7 @@ import {
     fetchCustomerDetails,
     persistCustomerDetails,
     updateCustomerDetails
-} from "../../action-creators/customer-details";
+} from "../../components/customer-details/customer-details-action-creators";
 import {
     addFinancedItem,
     fetchFinancedItems,

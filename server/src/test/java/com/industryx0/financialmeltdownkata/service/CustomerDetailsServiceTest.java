@@ -1,6 +1,6 @@
 package com.industryx0.financialmeltdownkata.service;
 
-import com.industryx0.financialmeltdownkata.domain.CustomerDetails;
+import com.industryx0.financialmeltdownkata.domain.CustomerDetailsView;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -12,7 +12,7 @@ public class CustomerDetailsServiceTest {
 
     @Test
     public void shouldStoreCustomerDetailsAndReturnItLater() {
-        CustomerDetails expectedCustomerDetails = new CustomerDetails();
+        CustomerDetailsView expectedCustomerDetails = new CustomerDetailsView();
         expectedCustomerDetails.setFirstName(UUID.randomUUID().toString());
         expectedCustomerDetails.setLastName(UUID.randomUUID().toString());
 

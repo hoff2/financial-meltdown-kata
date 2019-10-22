@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomerDetails from "../../components/customer-details";
+import CustomerDetailsView from "../../components/customer-details/customer-details-view";
 import FinancedItems from "../../components/financed-items";
 import PropTypes from 'prop-types';
 import {ToastContainer} from "react-toastify";
@@ -16,7 +16,7 @@ class CreditApplicationContainer extends React.Component {
             <div>
                 <ToastContainer />
                 <h1>Credit Application</h1>
-                <CustomerDetails {...this.props} />
+                <CustomerDetailsView {...this.props} />
                 <FinancedItems {...this.props} />
             </div>)
     }

@@ -1,13 +1,13 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import CustomerDetails from "../../../src/components/customer-details";
+import CustomerDetailsView from "../../../../src/components/customer-details/customer-details-view";
 import Chance from 'chance';
-import CustomerDetailsData from "../../../src/state/customer-details-data";
+import CustomerDetailsData from "../../../../src/components/customer-details/customer-details-state";
 import * as sinon from "sinon";
 
 const chance = new Chance();
 
-describe("CustomerDetails", () => {
+describe("CustomerDetailsView", () => {
     let customerDetails;
 
     const persistCustomerDetailsAC = sinon.spy();
@@ -28,7 +28,7 @@ describe("CustomerDetails", () => {
     };
 
     beforeEach(() => {
-        customerDetails = shallow(<CustomerDetails {...properties} />);
+        customerDetails = shallow(<CustomerDetailsView {...properties} />);
     });
 
     describe("update button", () => {

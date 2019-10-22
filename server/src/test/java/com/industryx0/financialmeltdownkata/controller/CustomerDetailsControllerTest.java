@@ -1,6 +1,6 @@
 package com.industryx0.financialmeltdownkata.controller;
 
-import com.industryx0.financialmeltdownkata.domain.CustomerDetails;
+import com.industryx0.financialmeltdownkata.domain.CustomerDetailsView;
 import com.industryx0.financialmeltdownkata.service.CustomerDetailsService;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class CustomerDetailsControllerTest {
     @Autowired
     private CustomerDetailsService service;
 
-    private CustomerDetails expected;
+    private CustomerDetailsView expected;
 
     private String expectedFirstName;
     private String expectedLastName;
@@ -46,7 +46,7 @@ public class CustomerDetailsControllerTest {
 
     @Before
     public void setup() {
-        expected = new CustomerDetails();
+        expected = new CustomerDetailsView();
 
         expectedFirstName = UUID.randomUUID().toString();
         expectedLastName = UUID.randomUUID().toString();

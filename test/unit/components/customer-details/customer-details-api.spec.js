@@ -1,4 +1,4 @@
-import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "../../../src/api/customer-details-api";
+import {getCustomerDetailsAPI, updateCustomerDetailsAPI} from "../../../../src/components/customer-details/customer-details-api";
 
 describe('customer details api', () => {
     beforeEach(() => {
