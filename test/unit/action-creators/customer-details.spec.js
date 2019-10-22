@@ -3,7 +3,7 @@ import {
     fetchCustomerDetails,
     persistCustomerDetails,
     updateCustomerDetails
-} from "../../../src/action-creators/update-customer-details";
+} from "../../../src/action-creators/customer-details";
 import Chance from 'chance';
 import {UPDATE_CUSTOMER_DETAILS} from "../../../src/action-creators/actions";
 import CustomerDetailsData from "../../../src/state/customer-details-data";

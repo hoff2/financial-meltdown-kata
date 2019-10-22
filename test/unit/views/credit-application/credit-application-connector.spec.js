@@ -27,7 +27,7 @@ describe("CreditApplicationConnector", () => {
     });
 
     describe("mapStateToProps", () => {
-        test("should provide customerDetails from state", () => {
+        test("should provide updateCustomerDetails from state", () => {
             expect(mapStateToProps(expectedState).customerDetails).toEqual(expectedCustomerDetails);
         });
     });
