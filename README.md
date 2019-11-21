@@ -188,7 +188,8 @@ Run the backend and frontend before running this command:
 #### Start the Backend App
 A simplistic script is provided that will build the backend, build a Docker
 image, and start up a container from it:
-```./run_server.sh```
+```cd server```
+```./run-server.sh```
 
 #### Unit and Integration Test the Backend App
 ```./mvnw test```
